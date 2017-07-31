@@ -13,7 +13,7 @@ foodRoutes.get('/add', (req,res) => {
 });
 
 foodRoutes.get('/:id',foodController.show);
-foodRoutes.put('/:id',foodController.update);
+//foodRoutes.put('/:id',foodController.update);
 foodRoutes.delete('/:id',foodController.delete);
 
 module.exports = foodRoutes;

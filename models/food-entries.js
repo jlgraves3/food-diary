@@ -7,7 +7,7 @@ foodEntry.findAll = () => {
 }
 
 foodEntry.findById = id => {
-	return db.oneOrNone(`SELECT * FROM food_entries WHERE id = $`,[id]);
+	return db.oneOrNone(`SELECT * FROM food_entries WHERE id = $1`,[id]);
 } 
 
 foodEntry.create = (entry) => {

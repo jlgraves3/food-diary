@@ -40,3 +40,15 @@ foodController.create = (req,res) => {
       res.status(500).json(err);
     });
 }
+
+foodController.delete = (req,res) => {
+	foodEntry.delete(req.params.id)
+	.then(() =>
+		{res.redirect('/food');}
+	).catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+}
+
+module.exports = foodController;
