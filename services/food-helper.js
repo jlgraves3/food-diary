@@ -11,6 +11,7 @@ function getItemsFromApi(req,res,next) {
 	.then(fetchRes => fetchRes.json());
 	.then(jsonRes => {
 		console.log(jsonRes);
+		res.locals.results = jsonRes.hits;
 		next();
 	}).catch(err => {
 		console.log(err);

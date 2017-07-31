@@ -5,8 +5,9 @@ const foodController = {};
 foodController.index = (req,res) => {
 	foodEntry.findAll()
 	.then(entries => {
-		res.send({
+		res.render('food-entries/food-index', {
 			data: entries,
+			date: 'July 31, 2017',
 		});
 	}).catch(err => {
       console.log(err);
