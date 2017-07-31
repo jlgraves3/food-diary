@@ -23,6 +23,7 @@
     "express": "^4.15.3",
     "isomorphic-fetch": "^2.2.1",
     "method-override": "^2.3.9",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "pg-promise": "^6.3.6"
   }
 }

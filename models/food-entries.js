@@ -13,10 +13,10 @@ foodEntry.findById = id => {
 foodEntry.create = (entry) => {
 	return db.one(`
 		INSERT INTO food_entries
-		(name, date, time, cals, user_id)
-		VALUES ($1, $2, $3, $4, $5)
+		(name, date, time, cals,details)
+		VALUES ($1, $2, $3, $4,$5)
 		RETURNING *
-	`, [entry.name, entry.date, entry.time, entry.cals, entry.user_id]);	
+	`, [entry.name, entry.date, entry.time, entry.cals, entry.details]);	
 }
 
 foodEntry.update = (entry, id) => {
@@ -26,9 +26,9 @@ foodEntry.update = (entry, id) => {
 			date = $2,
 			time = $3,
 			cals = $4,
-			user_id = $5
+			details = $5
 			WHERE id= $6
-	`, [entry.name, entry.date, entry.time, entry.cals, entry.user_id,id]);
+	`, [entry.name, entry.date, entry.time, entry.cals, entry.details,id]);
 }
 
 foodEntry.destroy = id => {
