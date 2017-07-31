@@ -21,3 +21,19 @@ const port = process.env.PORT || 3000;
 app.listen(port, function() {
 	console.log('Listening on port ' + port);
 });
+
+app.get('/', (req,res) => {
+	res.send({
+		message: 'hello world'
+	});
+});
+
+
+const foodRoutes = require('./routes/food-routes');
+app.use('/food',foodRoutes);
+
+
+// Error handler!
+app.get('*', (req, res) => {
+    res.status(404).send('not found!');
+});
