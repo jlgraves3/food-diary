@@ -18,3 +18,24 @@ foodEntry.create = (entry) => {
 		RETURNING *
 	`, [entry.name, entry.date, entry.time, entry.cals, entry.user_id]);	
 }
+
+foodEntry.update = (entry, id) => {
+	return db.none(`
+		UPDATE food_entries SET
+			name = $1,
+			date = $2,
+			time = $3,
+			cals = $4,
+			user_id = $5
+			WHERE id= $6
+	`, [entry.name, entry.date, entry.time, entry.cals, entry.user_id,id]);
+}
+
+foodEntry.destroy = id => {
+	return db.none(`
+		DELETE FROM food_entries
+		WHERE id = $1
+	`,[id]);
+};
+
+module.exports = foodEntry;
