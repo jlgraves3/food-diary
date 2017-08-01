@@ -3,7 +3,7 @@
 	<h1>Update Item</h1>
 	<% var date = new Date%>
 	
-	<form method='POST'>
+	<form method='POST' action='/<%= data.id %>?_method=PUT'>
 		<input name='time' type='time' placeholder='time' />
 		<form>
 			<input name='name' type='text' placeholder='item' />
@@ -11,7 +11,7 @@
 		</form>	
 		<input name='cals' type='number' placeholder='calories' />
 		<input name='details' type='text' placeholder='details'>
-		<input type='submit' value='add' />
+		<input type='submit' value='update' />
 	</form>
 
 
