@@ -3,12 +3,16 @@
 	<h1>Update Item</h1>
 	<% var date = new Date%>
 	
-	<form method='POST' action='/<%= data.id %>?_method=PUT'>
+	<form method='POST' action='/food/<%= data.id %>?_method=PUT'>
+		<input name='date' type='date' value='<%=data.date%>' />
 		<input name='time' type='time' value='<%=data.time%>' />
-		<form>
+
+		<!-- <form>
 			<input name='name' type='text' value='<%=data.name%>' />
 			<input type='submit' value='search' />
-		</form>	
+		</form> -->
+		<input name='name' type='text' value='<%=data.name%>' />
+
 		<input name='cals' type='number' value='<%=data.cals%>'  />
 		<input name='details' type='text' value='<%=data.details%>' >
 		<input type='submit' value='update' />
