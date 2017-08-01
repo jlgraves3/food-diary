@@ -11,3 +11,5 @@ authRouter.get('/login', authHelpers.loginRedirect, (req,res) => {
 authRouter.get('/register',authHelpers.loginRedirect, (req,res) => {
 	res.render('auth/register', {});
 });
+
+authRouter.post('/register',usersController.create);
