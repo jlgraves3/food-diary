@@ -4,13 +4,13 @@
 	<% var date = new Date%>
 	
 	<form method='POST' action='/<%= data.id %>?_method=PUT'>
-		<input name='time' type='time' placeholder='time' />
+		<input name='time' type='time' value='<%=data.time%>' />
 		<form>
-			<input name='name' type='text' placeholder='item' />
+			<input name='name' type='text' value='<%=data.name%>' />
 			<input type='submit' value='search' />
 		</form>	
-		<input name='cals' type='number' placeholder='calories' />
-		<input name='details' type='text' placeholder='details'>
+		<input name='cals' type='number' value='<%=data.cals%>'  />
+		<input name='details' type='text' value='<%=data.details%>' >
 		<input type='submit' value='update' />
 	</form>
 
