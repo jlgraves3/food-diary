@@ -23,13 +23,13 @@ foodEntry.findById = id => {
 	return db.oneOrNone(`SELECT * FROM food_entries WHERE id = $1`,[id]);
 } 
 
-foodEntry.create = (entry,date) => {
+foodEntry.create = (entry) => {
 	return db.one(`
 		INSERT INTO food_entries
-		(name, date, time, cals,details)
+		(name, date, time, cals, details)
 		VALUES ($1, $2, $3, $4,$5)
 		RETURNING *
-	`, [entry.name, date, entry.time, entry.cals, entry.details]);	
+	`, [entry.name, entry.date, entry.time, entry.cals, entry.details]);	
 }
 
 foodEntry.update = (entry, id) => {

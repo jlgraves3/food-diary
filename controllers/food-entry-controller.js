@@ -86,14 +86,5 @@ foodController.delete = (req,res) => {
     });
 }
 
-foodController.showResults = (req,res) => {
-	console.log('show results');
-	res.json({
-		data : res.locals.results
-	});
-	/*res.render('food-entries/food-results', {
-		data: res.locals.results
-	});*)*/
-}
 
 module.exports = foodController;
