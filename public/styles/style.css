@@ -1,6 +1,43 @@
+body {
+	font-family: sans-serif;
+}
+
 .entry {
 	border: 1px solid black;
 	margin: 20px;
 	padding: 20px;
 	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+input {
+	font-size: 18px;
+	display: block;
+	margin: 10px;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+}
+
+a {
+	text-decoration: none;
+	color: blue;
+
+}
+
+ul {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+li {
+	justify-content: space-between;
+	margin: 10px 50px;
 }

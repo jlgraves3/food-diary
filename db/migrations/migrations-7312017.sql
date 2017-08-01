@@ -6,6 +6,5 @@ CREATE TABLE IF NOT EXISTS food_entries (
 	date DATE,
 	time TIME(0),
 	cals INTEGER,
-	details VARCHAR	
+	details VARCHAR,
 );
-

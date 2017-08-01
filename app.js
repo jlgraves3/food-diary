@@ -12,14 +12,12 @@ const passport = require('passport');
 const app = express();
 //add dotenv files 
 require('dotenv').config();
-console.log(process.env.API_KEY);
 
 //middlewares
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
-console.log(process.env.SECRET_KEY);
 app.use(cookieParser());
 app.use(session({
 	secret: process.env.SECRET_KEY,
@@ -41,9 +39,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req,res) => {
-	res.send({
-		message: 'hello world'
-	});
+	res.render('index',{});
 });
 
 

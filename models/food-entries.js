@@ -10,26 +10,26 @@ const year = date.getFullYear();
 const formattedDate = 
 
 
-foodEntry.findAll = date => {
+foodEntry.findAll = (date,userid) => {
 	console.log(date);
 	return db.query(`
 		SELECT * FROM food_entries 
-		WHERE date = $1
+		WHERE date = $1 AND user_id = $2
 		ORDER BY time 
-	`, date);
+	`, [date,userid]);
 }
 
 foodEntry.findById = id => {
 	return db.oneOrNone(`SELECT * FROM food_entries WHERE id = $1`,[id]);
 } 
 
-foodEntry.create = (entry) => {
+foodEntry.create = (entry, userid) => {
 	return db.one(`
 		INSERT INTO food_entries
-		(name, date, time, cals, details)
-		VALUES ($1, $2, $3, $4,$5)
+		(name, date, time, cals, details,user_id)
+		VALUES ($1, $2, $3, $4,$5,$6)
 		RETURNING *
-	`, [entry.name, entry.date, entry.time, entry.cals, entry.details]);	
+	`, [entry.name, entry.date, entry.time, entry.cals, entry.details,userid]);	
 }
 
 foodEntry.update = (entry, id) => {
@@ -50,5 +50,13 @@ foodEntry.delete = id => {
 		WHERE id = $1
 	`,[id]);
 };
+
+//gets total calories for day
+foodEntry.dailyCals = (date,userid) => {
+	return db.one(`
+		SELECT SUM(cals) FROM food_entries 
+		WHERE date = $1 AND user_id = $2
+	`,[date,userid]);
+}
 
 module.exports = foodEntry;

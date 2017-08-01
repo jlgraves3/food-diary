@@ -2,21 +2,24 @@ const foodEntry  = require('../models/food-entries.js');
 const moment = require('moment');
 const foodController = {};
 
+
+const stringDate = moment().format('dddd, MMMM Do YYYY');
+const parsedDate = moment().format('YYYY-MM-DD');
+
 foodController.index = (req,res) => {
-	var today = moment().format('dddd, MMMM Do YYYY');
-	console.log(today);
-	var parsedDate = moment().format('YYYY-MM-DD');
-	console.log(parsedDate);
-	foodEntry.findAll(parsedDate)
-	.then(entries => {
-		res.render('food-entries/food-index', {
-			data: entries,
-			date: today,
-		});
-	}).catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    })
+	foodEntry.dailyCals(parsedDate,req.user.id)
+	.then((total) =>
+		foodEntry.findAll(parsedDate,req.user.id)
+		.then(entries => {
+			res.render('food-entries/food-index', {
+				data: entries,
+				date: stringDate,
+				totalCals: total.sum
+			});
+		}).catch(err => {
+	      console.log(err);
+	      res.status(500).json(err);
+	    }));
 } 
 
 foodController.show = (req,res) => {
@@ -38,7 +41,7 @@ foodController.create = (req,res) => {
 		time: req.body.time,
 		cals: req.body.cals,
 		details: req.body.details
-	}).then(() => {
+	},req.user.id).then(() => {
 		res.redirect('/food');
 	}).catch(err => {
       console.log(err);
@@ -47,7 +50,6 @@ foodController.create = (req,res) => {
 }
 
 foodController.edit = (req,res) => {
-	console.log('controller edit');
 	foodEntry.findById(req.params.id)
 	.then(entry => {
 		res.render('food-entries/food-update', {
@@ -60,7 +62,6 @@ foodController.edit = (req,res) => {
 }
 
 foodController.update = (req,res) => {
-	console.log('controller update');
 	foodEntry.update({
 		name: req.body.name,
 		date: moment().format('YYYY-MM-DD'),
@@ -84,6 +85,10 @@ foodController.delete = (req,res) => {
       console.log(err);
       res.status(500).json(err);
     });
+}
+
+foodController.archive = (req,res) => {
+	res.render('food-entries/archive', {});
 }
 
 

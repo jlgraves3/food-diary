@@ -1,7 +1,12 @@
 <% include ../partials/boilerplate %>
 
+<a href='/food/add'>back</a>
 <% for (let result of data) { %>
-	<h1><%= result.fields.item_name %></h1>
+	<div class='entry'>
+		<h2><%= result.fields.item_name %></h2>
+		<h3><%= Math.round(result.fields.nf_calories) %> Calories</h3>
+		<h4><%= result.fields.brand_name %> </h4>
+	</div>
 <% } %>
 
 <% include ../partials/end %>

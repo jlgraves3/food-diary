@@ -5,7 +5,7 @@ const usersController = {};
 
 usersController.create = (req,res) => {
 	const salt = bcrypt.genSaltSync();
-	const hash = bcrypt.hashSyn(req.body.password, salt);
+	const hash = bcrypt.hashSync(req.body.password, salt);
 	User.create({
 		username: req.body.username,
 		email: req.body.email,
@@ -24,7 +24,7 @@ usersController.create = (req,res) => {
 }
 
 usersController.index = (req,res) => {
-	res.json({
+	res.render('auth/profile',{
 		user:req.user,
 		data: ''
 	});

@@ -2,7 +2,10 @@
 
 	<h1>Add Item</h1>
 
-	<a href='/food/search'>Search</a>
+	<form method='POST' action='/food/add'>
+		<input name='item' type='text' placeholder='item'>
+		<input type='submit' value='search' />
+	</form>
 	
 	<form method='POST' action='/food'>
 		<input name='time' type='time' placeholder='time' required />
@@ -12,5 +15,6 @@
 		<input type='submit' value='add' />
 	</form>
 
+	<a href='/food'>Cancel</a>
 
 <% include ../partials/end %>
