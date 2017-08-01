@@ -30,7 +30,7 @@ app.get('/', (req,res) => {
 
 
 const foodRoutes = require('./routes/food-routes');
-app.use('/food',foodRoutes);
+app.use('/food', foodRoutes);
 
 
 // Error handler!

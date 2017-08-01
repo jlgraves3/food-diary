@@ -1,8 +1,18 @@
 <% include ../partials/boilerplate %>
+
 	<h1>Add Item</h1>
-	<form method='POST' action='/food/add?_method=GET'>
-		<input name='name' type='text' placeholder='item'/ >
-		<input type='submit' value='search' />
+	<% var date = new Date%>
+	
+	<form method='POST' action='/food'>
+		<input name='time' type='time' placeholder='time' />
+		<form>
+			<input name='name' type='text' placeholder='item' />
+			<input type='submit' value='search' />
+		</form>	
+		<input name='cals' type='number' placeholder='calories' />
+		<input name='details' type='text' placeholder='details'>
+		<input type='submit' value='add' />
 	</form>
+
 
 <% include ../partials/end %>
