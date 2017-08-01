@@ -63,7 +63,7 @@ foodController.update = (req,res) => {
 	console.log('controller update');
 	foodEntry.update({
 		name: req.body.name,
-		date: req.body.date,
+		date: moment().format('YYYY-MM-DD'),
 		time: req.body.time,
 		cals: req.body.cals,
 		details: req.body.details

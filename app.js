@@ -1,30 +1,25 @@
 const express = require('express');
-const path = require('path');
 const logger = require('morgan');
+const path = require('path');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-
 //auth dependencies
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 
-
+//initialize app
 const app = express();
+//add dotenv files 
 require('dotenv').config();
+console.log(process.env.API_KEY);
 
-app.use(methodOverride('_method'));
-
-
-app.set('views',path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(express.static(path.join(__dirname,'public')));
-
+//middlewares
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
+app.use(methodOverride('_method'));
+console.log(process.env.SECRET_KEY);
 app.use(cookieParser());
 app.use(session({
 	secret: process.env.SECRET_KEY,
@@ -38,6 +33,12 @@ const port = process.env.PORT || 3000;
 app.listen(port, function() {
 	console.log('Listening on port ' + port);
 });
+
+
+app.set('views',path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
 
 app.get('/', (req,res) => {
 	res.send({

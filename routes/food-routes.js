@@ -12,8 +12,11 @@ foodRoutes.get('/add', (req,res) => {
 	res.render('food-entries/food-add');
 });
 
-foodRoutes.get('/:id/edit', foodController.edit);
+foodRoutes.get('/add/:item', foodHelper.getItemsFromApi, (req,res) => {
+	res.json({data: res.locals.results});
+})
 
+foodRoutes.get('/:id/edit', foodController.edit);
 foodRoutes.get('/:id',foodController.show);
 foodRoutes.put('/:id',foodController.update);
 foodRoutes.delete('/:id',foodController.delete);
