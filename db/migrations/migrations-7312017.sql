@@ -8,3 +8,4 @@ CREATE TABLE IF NOT EXISTS food_entries (
 	cals INTEGER,
 	details VARCHAR	
 );
+
