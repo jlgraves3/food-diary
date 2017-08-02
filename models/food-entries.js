@@ -1,5 +1,4 @@
 const db = require('../db/config');
-const moment = require('moment');
 
 const foodEntry = {};
 
