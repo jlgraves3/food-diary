@@ -25,8 +25,9 @@ usersController.create = (req,res) => {
 
 usersController.index = (req,res) => {
 	res.render('auth/profile',{
-		user:req.user,
-		data: ''
+		user: req.user,
+		data: '',
+		currentPage: 'profile',
 	});
 }
 

@@ -11,12 +11,15 @@ foodRoutes.get('/', authHelpers.loginRequired, foodController.index);
 foodRoutes.post('/',authHelpers.loginRequired, foodController.create);
 
 foodRoutes.get('/add', authHelpers.loginRequired, (req,res) => {
-	res.render('food-entries/food-add');
+	res.render('food-entries/food-add',{
+		currentPage: 'food-add',
+	});
 });
 
 foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromApi, (req,res) => {
 	res.render('food-entries/food-results',
-		{data: res.locals.results});
+		{results: res.locals.results,
+		 currentPage: 'food-results'});
 });
 //route for specific day
 foodRoutes.get('/:date', authHelpers.loginRequired, foodController.indexOld);

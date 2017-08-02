@@ -1,15 +1,64 @@
 body {
-	font-family: sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #223647;
 }
 
+
+.date-header {
+	text-align: center;
+	font-size: 28px;
+	margin-top: 25px;
+	color: #0E94A1;
+	font-weight: normal;
+}
+#total-cals {
+	background: #0E94A1;
+}
+
+
 .entry {
-	border: 1px solid black;
-	margin: 20px;
-	padding: 20px;
+	margin: 5px 30px;
+	padding: 10px;
 	border-radius: 10px;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: linear-gradient(to right, #0E94A1 , #13CAD5);
+	color: white;
+}
+
+.entry a:hover {
+	color: #223647;
+	transition: 0.5s;
+}
+
+.headers {
+	font-size: 14px;
 	display: flex;
 	justify-content: space-between;
+	text-transform: uppercase;
+	font-weight: normal;
+	background: none;
+	color:  #223647;
 }
+
+#add-item {
+	background: #223647;
+	color: white;
+	width: 120px;
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#add-item:hover {
+	background: #13CAD5;
+	transition: 0.5s;
+}
+
+
 
 input {
 	font-size: 18px;
@@ -21,13 +70,43 @@ nav {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	background-color: #223647;
+	padding: 15px;
+}
 
+nav a {
+	color: #F3F2ED;
+	font-size: 20px;
+}
+nav a:hover {
+	color: #13CAD5;
+	transition: 0.5s;
+} 
+
+.profile {
+	border: 1px solid #13CAD5;
+	border-radius: 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 50px 20%;
+}
+
+.profile h1 {
+	font-size: 36px; 
+	padding: 10px;
+	margin: 0 auto;
+}
+.profile h2 {
+	margin: 20px;
+}
+.profile h3 {
+	margin-left: 20px;
 }
 
 a {
 	text-decoration: none;
-	color: blue;
-
+	color: white;
 }
 
 ul {
@@ -40,4 +119,37 @@ ul {
 li {
 	justify-content: space-between;
 	margin: 10px 50px;
+}
+
+.form-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+}
+
+.search {
+	flex: 2;
+	text-align: center;
+}
+
+.add-form {
+	flex: 2;
+	text-align: center;
+}
+
+input {
+	display: block;
+	border-radius: 5px;
+	width: 60%;
+	border: 1px solid #0E94A1;
+	padding: 2px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #223647;
+}
+
+
+
+.current-page a {
+	color: #13CAD5;
 }

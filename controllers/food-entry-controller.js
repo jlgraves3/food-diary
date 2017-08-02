@@ -17,7 +17,8 @@ foodController.index = (req,res) => {
 				data: entries,
 				date: moment(today).format('dddd, MMMM Do YYYY'),
 				totalCals: total.sum,
-				yesterday: yesterday
+				yesterday: yesterday,
+				currentPage: 'food-index'
 			});
 		}).catch(err => {
 	      console.log(err);
@@ -34,7 +35,8 @@ foodController.indexOld = (req,res) => {
 			res.render('archive/day-single', {
 				data: entries,
 				date: moment(req.params.date).format('dddd, MMMM Do YYYY'),
-				totalCals: total.sum
+				totalCals: total.sum,
+				currentPage: 'day-single',
 			});
 		}).catch(err => {
 	      console.log(err);
@@ -47,6 +49,7 @@ foodController.show = (req,res) => {
 	.then(entry => {
 		res.render('food-entries/food-single', {
 			data: entry,
+			currentPage: 'food-single',
 		});
 	}).catch(err => {
       console.log(err);

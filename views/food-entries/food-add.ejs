@@ -1,19 +1,20 @@
 <% include ../partials/boilerplate %>
 
 	<h1>Add Item</h1>
-
-	<form method='POST' action='/food/add'>
-		<input name='item' type='text' placeholder='item'>
-		<input type='submit' value='search' />
-	</form>
-	
-	<form method='POST' action='/food'>
-		<input name='time' type='time' placeholder='time' required />
-		<input name='name' type='text' placeholder='item' required />
-		<input name='cals' type='number' placeholder='calories' required />
-		<input name='details' type='text' placeholder='details' required />
-		<input type='submit' value='add' />
-	</form>
+	<div class='form-div'>
+		<form method='POST' action='/food/add' class='search'>
+			<input name='item' type='text' placeholder='item'>
+			<input type='submit' value='search' />
+		</form>
+		
+		<form method='POST' action='/food' class='add-form'>
+			<span>time</span><input name='time' type='time' placeholder='time' required />
+			<span>item</span><input name='name' type='text' placeholder='item' required />
+			<span>calories</span><input name='cals' type='number' placeholder='calories' required />
+			<span>details</span><input name='details' type='text' placeholder='details' />
+			<input type='submit' value='add' />
+		</form>
+	</div>
 
 	<a href='/food'>Cancel</a>
 

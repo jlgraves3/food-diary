@@ -1,14 +1,9 @@
-<% include ../partials/boilerplate %>
-
-<a href='/food/add'>back</a>
-<form method='POST' action='/food/add'>
+<% if results { %>
+	<form method='POST' action='/food/add'>
 	<span>item</span>
 	<select>
-	<% var results = data %>
 	<% for (let result of data) { %>
 		<option value='<%= result.id%>'><%= result.fields.item_name %> <%= result.fields.brand_name %></option>
 		<% } %>
 	</select>
-
-
-<% include ../partials/end %>
+<% } %>

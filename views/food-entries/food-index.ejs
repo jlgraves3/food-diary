@@ -1,22 +1,38 @@
 <% include ../partials/boilerplate %>
 	
-	<h1><%= date %></h1>
+	<h1 class='date-header'><%= date %></h1>
 	<a href='/food/<%=yesterday%>'>Yesterday</a>
+
+	<div class='headers entry'>
+		<h2 class='time-col'>Time</h2>
+		<h2 class='name-col'>Item</h2>
+		<h2 class='cals-col'>Calories</h2>
+		<h2></h2>
+	</div>
+
 	<% for (let food of data) { %>
 		<div class='entry'>
-			<h2><%= food.time %></h2>
-			<h1><%= food.name %></h1>
-			<h2><%= food.cals %> calories</h2>
-			<a href='/food/<%=food.id%>'>details</a>
+			<% var sfx = food.time > '11:59:59' ? 'PM' : 'AM' %>
+			<h2 class='time-col'><%= food.time %></h2>
+			<h2 class='name-col'><%= food.name %></h1>
+			<h2 class='cals-col'><%= food.cals %> calories</h2>
+			<a href='/food/<%=food.id%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+</a>
 		</div>
 	<% } %>
 
-	<div class='entry'>
-		<h2>Total Calories: <%= totalCals%></h2>
+	<a href='/food/add'>
+	<div class='entry' id='add-item'>
+		<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
 	</div>
+	</a>
+	
 
-	<div class='entry'>
-		<a href='/food/add'>add item</a>
+	<div class='entry' id='total-cals'>
+		<h2 class='time-col'>Total</h2>
+		<h2 class='name-col'>meals</h2>
+		<h2 class='cals-col'><%= totalCals%> Calories</h2>
+		<h2></h2>
 	</div>
 
 <% include ../partials/end %>
