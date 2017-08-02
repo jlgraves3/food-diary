@@ -1,13 +1,12 @@
 <% include ../partials/boilerplate %>
 	
 	<h1><%= date %></h1>
-	<a href='/food/<%=yesterday%>'>Yesterday</a>
+
 	<% for (let food of data) { %>
 		<div class='entry'>
 			<h2><%= food.time %></h2>
 			<h1><%= food.name %></h1>
 			<h2><%= food.cals %> calories</h2>
-			<a href='/food/<%=food.id%>'>details</a>
 		</div>
 	<% } %>
 

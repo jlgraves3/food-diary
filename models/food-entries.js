@@ -3,13 +3,6 @@ const moment = require('moment');
 
 const foodEntry = {};
 
-const date = new Date();
-const day = date.getDate();
-const month = date.getMonth();
-const year = date.getFullYear();
-const formattedDate = 
-
-
 foodEntry.findAll = (date,userid) => {
 	console.log(date);
 	return db.query(`

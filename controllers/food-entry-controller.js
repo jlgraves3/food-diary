@@ -2,18 +2,38 @@ const foodEntry  = require('../models/food-entries.js');
 const moment = require('moment');
 const foodController = {};
 
+//const stringDate = moment().format('dddd, MMMM Do YYYY');
+//const parsedDate = moment().format('YYYY-MM-DD');
 
-const stringDate = moment().format('dddd, MMMM Do YYYY');
-const parsedDate = moment().format('YYYY-MM-DD');
 
 foodController.index = (req,res) => {
-	foodEntry.dailyCals(parsedDate,req.user.id)
+	var today = moment().format('YYYY-MM-DD');
+	var yesterday = moment().add(-1,'day').format('YYYY-MM-DD');
+	foodEntry.dailyCals(today,req.user.id)
 	.then((total) =>
-		foodEntry.findAll(parsedDate,req.user.id)
+		foodEntry.findAll(today,req.user.id)
 		.then(entries => {
 			res.render('food-entries/food-index', {
 				data: entries,
-				date: stringDate,
+				date: moment(today).format('dddd, MMMM Do YYYY'),
+				totalCals: total.sum,
+				yesterday: yesterday
+			});
+		}).catch(err => {
+	      console.log(err);
+	      res.status(500).json(err);
+	    }));
+} 
+
+
+foodController.indexOld = (req,res) => {
+	foodEntry.dailyCals(req.params.date,req.user.id)
+	.then((total) =>
+		foodEntry.findAll(req.params.date,req.user.id)
+		.then(entries => {
+			res.render('archive/day-single', {
+				data: entries,
+				date: moment(req.params.date).format('dddd, MMMM Do YYYY'),
 				totalCals: total.sum
 			});
 		}).catch(err => {
@@ -59,6 +79,12 @@ foodController.edit = (req,res) => {
       console.log(err);
       res.status(500).json(err);
     });
+}
+
+foodController.archive = (req,res) => {
+	var date = req.params.date;
+	var lastweek = [];
+
 }
 
 foodController.update = (req,res) => {

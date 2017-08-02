@@ -18,6 +18,8 @@ foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromA
 	res.render('food-entries/food-results',
 		{data: res.locals.results});
 });
+//route for specific day
+foodRoutes.get('/:date', authHelpers.loginRequired, foodController.indexOld);
 
 foodRoutes.post('/add', authHelpers.loginRequired,  (req,res) => {
 	res.redirect(`/food/add/${req.body.item}`);
