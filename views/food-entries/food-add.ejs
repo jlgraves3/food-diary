@@ -1,6 +1,7 @@
 <% include ../partials/boilerplate %>
 
 	<h1>Add Item</h1>
+
 	<div class='form-div'>
 		<form method='POST' action='/food/add' class='search'>
 			<input name='item' type='text' placeholder='item'>
@@ -15,6 +16,10 @@
 			<input type='submit' value='add' />
 		</form>
 	</div>
+
+	<% if (results) { %>
+		<% include ./food-results %>
+	<% } %>
 
 	<a href='/food'>Cancel</a>
 

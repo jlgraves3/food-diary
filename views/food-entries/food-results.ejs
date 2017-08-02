@@ -1,9 +1,9 @@
-<% if results { %>
+
 	<form method='POST' action='/food/add'>
 	<span>item</span>
 	<select>
-	<% for (let result of data) { %>
+	<% for (let result of results) { %>
 		<option value='<%= result.id%>'><%= result.fields.item_name %> <%= result.fields.brand_name %></option>
 		<% } %>
 	</select>
-<% } %>
+
