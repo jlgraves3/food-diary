@@ -8,8 +8,7 @@ Stats.allCals = (userid,start,end) => {
 		FROM food_entries
 		WHERE user_id = $1 AND 
 		date > $2 AND date < $3
-		GROUP BY 1,2
-		ORDER BY 1,2
+		GROUP BY date
 	`,[userid,start,end]);
 }
 

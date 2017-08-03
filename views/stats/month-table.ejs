@@ -1,16 +1,17 @@
 <% include ../partials/boilerplate %>
 
 <h1>Month</h1>
-
-<canvas id="myLineChart" width="400" height="400"></canvas>
-
+<div class='chart-container' style="position: relative; height:60vh; width:60vw">
+	<canvas id="myLineChart" width="400" height="400"></canvas>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
 
 
 <script>
 
 var dates = [<%=dates%>];
-var cals = <%=JSON.stringify(cals)%>;
+var cals = [<%=cals%>];
+console.log(cals);
 
 console.log(typeof dates);
 
@@ -21,12 +22,17 @@ console.log(typeof dates);
 			labels: dates,
 			datasets: [{
 				label: 'calories',
-				backgroundColor: 'white',
+				backgroundColor: 'rgba(0,0,0,0)',
 				borderColor: '#13CAD5',
 				data: cals,
 			}]
 		},
-		options: {}
+		options: {
+			layout: {
+				padding: 100
+			},
+			maintainAspectRatio: false,
+		}
 	});
 </script>
 

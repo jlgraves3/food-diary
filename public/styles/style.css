@@ -335,3 +335,6 @@ select {
 	color:  #13CAD5;
 }
 
+.chart-container {
+	margin: 0 auto;
+}

@@ -10,14 +10,16 @@ function formatDates(dates) {
 
 statsController.month = (req,res) => {
 	var month = req.params.month
-	var first = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD') + '';
-	var last = moment(first).add(1,'month').add(1,'day').format('YYYY-MM-DD') + '';
+	var first = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
+	console.log(first);
+	var last = moment(first).add(1,'month').add(1,'day').format('YYYY-MM-DD');
 	Stats.allCals(req.user.id,first,last)
 	.then(monthData => {
+		console.log(monthData);
 		let cals = [];
 		let dates = [];
 		monthData.forEach((i) => {
-			cals.push(i.cals);
+			cals.push(i.daily_sum + '');
 			dates.push(i.date);
 		})
 		res.render('stats/month-table', {
