@@ -5,5 +5,7 @@ const archiveController = require('../controllers/archive-controller');
 
 archiveRoutes.get('/', authHelpers.loginRequired, archiveController.index);
 
+archiveRoutes.get('/:date', authHelpers.loginRequired, archiveController.show);
+
 
 module.exports = archiveRoutes;

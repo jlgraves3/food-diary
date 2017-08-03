@@ -6,7 +6,7 @@ const statsController = require('../controllers/stats-controller');
 
 statsRoutes.get('/', authHelpers.loginRequired, statsController.index);
 
-statsRoutes.get('/:month',statsController.month);
+statsRoutes.get('/:month',authHelpers.loginRequired,statsController.month);
 
 
 module.exports = statsRoutes;

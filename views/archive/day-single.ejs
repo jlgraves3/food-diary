@@ -1,5 +1,9 @@
 <% include ../partials/boilerplate %>
 	
+	<a href='/archive' class='back'>
+		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+	</a>
+
 	<h1 class='date-header'><%= date %></h1>
 
 	<div class='headers entry'>
@@ -14,14 +18,13 @@
 			<h2 class='time-col'><%= food.time %></h2>
 			<h2 class='name-col'><%= food.name %></h1>
 			<h2 class='cals-col'><%= food.cals %> calories</h2>
-			<a class ='details-col' href='/food/<%=food.id%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
-</a>
+			<h2 class ='details-col'></h2>
 		</div>
 	<% } %>
 
 	<div class='entry' id='total-cals'>
-		<h2 class='time-col'>Total</h2>
-		<h2 class='name-col'>meals</h2>
+		<h2 class='time-col'>TOTAL</h2>
+		<h2 class='name-col'></h2>
 		<h2 class='cals-col'><%= totalCals%> Calories</h2>
 		<h2></h2>
 	</div>

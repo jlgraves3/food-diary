@@ -9,11 +9,24 @@ var today = moment().format('YYYY-MM-DD');
 var yesterday = moment().add(-1,'day').format('YYYY-MM-DD');
 
 
+parseTime = (entries) => {
+	for (let entry of entries) {
+		let time = entry.time;
+		let HH = time.slice(0,2);
+		let MM = time.slice(3,5);
+		let A = HH >= 12 ? 'PM' : 'AM';
+		hh = HH % 12;
+		hh = hh === 0 ? 12 : hh;
+		entry.formattedTime = `${hh}:${MM} ${A}`;
+	}
+};
+
 foodController.index = (req,res) => {
 	foodEntry.dailyCals(today,req.user.id)
 	.then((total) =>
 		foodEntry.findAll(today,req.user.id)
 		.then(entries => {
+			parseTime(entries);
 			res.render('food-entries/food-index', {
 				data: entries,
 				date: moment(today).format('dddd, MMMM Do YYYY'),

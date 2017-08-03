@@ -9,6 +9,11 @@ h1 {
 	font-size: 28px;
 }
 
+iframe {
+	width: 30%;
+	height: 30%;
+}
+
 nav {
 	display: flex;
 	flex-direction: row;
@@ -19,7 +24,7 @@ nav {
 
 nav a {
 	color: #F3F2ED;
-	font-size: 20px;
+	font-size: 16px;
 }
 nav a:hover {
 	color: #13CAD5;
@@ -60,6 +65,10 @@ li {
 	transition: 0.5s;
 }
 
+
+.archive {
+	padding: 15px;
+}
 .current-page a {
 	color: #13CAD5;
 }
@@ -101,7 +110,6 @@ input[type=submit]:hover {
 	margin: 10px;
 	box-sizing: border-box;
  }
-
 
 
 .home-div {
@@ -155,10 +163,6 @@ h1 {
 
 .add-header {
 	text-align: center;	
-}
-
-#myLineChart {
-	background-color: yellow;
 }
 
 .headers {
@@ -216,13 +220,26 @@ form {
 }
 #add-item {
 	background: #223647;
-	padding: 5px;
+	padding: 8px 10px;
 	color: white;
 	width: 120px;
 	text-align: center;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	height: 30px;
+}
+
+#add-button {
+	width: 120px;
+	background-color: yellow;
+}
+
+#add-item i {
+	margin-left: -3px;
+}
+#add-item span {
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 14px;
+	padding-right: 10px;
 }
 
 #add-item:hover {

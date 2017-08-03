@@ -8,8 +8,9 @@
 
 
 <script>
-var dates = <%=dates%>;
-var cals = <%=cals%>;
+
+var dates = [<%=dates%>];
+var cals = <%=JSON.stringify(cals)%>;
 
 console.log(typeof dates);
 
@@ -20,8 +21,8 @@ console.log(typeof dates);
 			labels: dates,
 			datasets: [{
 				label: 'calories',
-				backgroundColor: 'red',
-				borderColor: 'black',
+				backgroundColor: 'white',
+				borderColor: '#13CAD5',
 				data: cals,
 			}]
 		},

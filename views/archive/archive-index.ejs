@@ -5,8 +5,9 @@
 	<h1>Archive</h1>
 
 	<% for (let day of pastDays)  { %>
-		<div class='entry day'>
-			<h2><%=day%></h2>
+		<div class='entry archive'>
+			<h2><%=day.display%></h2>
+			<a class ='details-col' href='/archive/<%=day.url%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
 		</div>
 	<% } %>
 <% include ../partials/end %>

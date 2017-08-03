@@ -2,6 +2,12 @@ const Stats = require('../models/stats');
 const moment = require('moment');
 const statsController = {};
 
+
+
+function formatDates(dates) {
+	return dates.map(date => `${moment(date).format('DD')}`);
+}
+
 statsController.month = (req,res) => {
 	var month = req.params.month
 	var first = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD') + '';
@@ -15,7 +21,7 @@ statsController.month = (req,res) => {
 			dates.push(i.date);
 		})
 		res.render('stats/month-table', {
-			dates: dates,
+			dates: formatDates(dates),
 			cals: cals,
 			currentPage: 'stats',
 			username: req.user.username,

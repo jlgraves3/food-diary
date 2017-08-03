@@ -4,9 +4,12 @@ const Stats = {};
 
 Stats.allCals = (userid,start,end) => {
 	return db.query(`
-		SELECT date,cals FROM food_entries
+		SELECT date, SUM(cals) AS daily_sum
+		FROM food_entries
 		WHERE user_id = $1 AND 
 		date > $2 AND date < $3
+		GROUP BY 1,2
+		ORDER BY 1,2
 	`,[userid,start,end]);
 }
 
