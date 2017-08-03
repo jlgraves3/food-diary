@@ -41,9 +41,9 @@ app.use(express.static('public'));
 app.get('/', (req,res) => {
 	res.render('index',{
 		currentPage: 'index',
+		username: null,
 	});
 });
-
 
 const foodRoutes = require('./routes/food-routes');
 app.use('/food', foodRoutes);

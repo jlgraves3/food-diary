@@ -17,7 +17,8 @@ statsController.month = (req,res) => {
 		res.render('stats/month-table', {
 			dates: dates,
 			cals: cals,
-			currentPage: 'stats'
+			currentPage: 'stats',
+			username: req.user.username,
 		});
 	}).catch(err => {
 		console.log(err);
@@ -28,6 +29,7 @@ statsController.month = (req,res) => {
 statsController.index = (req,res) => {
 	res.render('stats/stats-index',{
 		currentPage: 'stats',
+		username: req.user.username,
 	});
 }
 

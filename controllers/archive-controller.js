@@ -2,9 +2,16 @@ const Archive  = require('../models/archive.js');
 const moment = require('moment');
 const archiveController = {};
 
+const today = moment().format('YYYY-MM-DD');
+
 archiveController.index = (req,res) => {
+	var past = [];
+	for(var i=-10;i<0;i++) {
+		past.push(moment(today).add(i,'day'));
+	}
 	res.render('archive/archive-index',{
-		currentPage: 'archive'
+		currentPage: 'archive',
+		pastDays: past,
 	});
 }
 

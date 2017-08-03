@@ -28,6 +28,7 @@ usersController.index = (req,res) => {
 		user: req.user,
 		data: '',
 		currentPage: 'profile',
+		username: req.user.username,
 	});
 }
 

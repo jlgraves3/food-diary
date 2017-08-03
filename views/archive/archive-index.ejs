@@ -1,4 +1,12 @@
 <% include ../partials/boilerplate %>
 	<a href='#'>Week</a>
 	<a href='#'>Month</a>
+
+	<h1>Archive</h1>
+
+	<% for (let day of pastDays)  { %>
+		<div class='entry day'>
+			<h2><%=day%></h2>
+		</div>
+	<% } %>
 <% include ../partials/end %>

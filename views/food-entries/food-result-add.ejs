@@ -1,0 +1,22 @@
+<% include ../partials/boilerplate %>
+
+	<h1 class='add-header'>Add Item</h1>
+
+	<div class='form-div'>
+			
+		<div class='add-div'>
+			<form method='POST' action='/food' class='add-form'>
+				<input name='time' type='time' placeholder='time' required />
+				<input name='name' type='text' value='<%=data.name%>' required />
+				<input name='cals' type='number' value='<%=data.cals%>' required />
+				<input name='details' type='text' value='<%=data.details%>' />
+				<input type='submit' value='add' class='button'/>
+			</form>
+		</div>
+
+	</div>
+
+	
+	<a href='/food'>Cancel</a>
+
+<% include ../partials/end %>

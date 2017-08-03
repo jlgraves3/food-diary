@@ -3,17 +3,43 @@
 	<a href='/food/add' class='back'>
 		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
 	</a>
-	
+
 	<h1><%= header %></h1>
 	<!--<form method='POST' action='/food/add' class='results-form'> -->
+		<% var i=0 %>
 		<% for (let result of results) { %>
-			<div class='entry'>
-			<!--<option value='<%= result.id%>'>-->
+			<div class='entry result' id='<%=i%>'>
 				<h2 class='time-col'><%= result.fields.item_name %> <%= result.fields.brand_name %></h2> 
 				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> Calories</h2>
 			</div>
+			<% i+=1 %>
 		<% } %>
+	
+	<script>
+		/*function addResult(req,res) {
+			res.render('food',{
+
+			})
+		}
+
+		function getResult() {
+			//let name = $(this).innerHTML
+			id = $(this).attr('id');
 			
+			console.log('id');
+			let data = {
+				name: results[id].fields.item_name,
+				cals:  Math.round(results[id].fields.nf_calories),
+				details: results[id].fields.nf_total_fat,
+			}
+			
+		}
+
+
+		$('.result').click(getResult); */
+
+
+	</script>			
 
 	<!--</form> -->
 

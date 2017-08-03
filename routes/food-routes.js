@@ -14,14 +14,9 @@ foodRoutes.get('/add', authHelpers.loginRequired, (req,res) => {
 	res.render('food-entries/food-add',{
 		currentPage: 'food',
 		results: null,
+		username: req.user.username,
 	});
 });
-/*
-foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromApi, (req,res) => {
-	res.render('food-entries/food-results',
-		{results: res.locals.results,
-		 currentPage: 'food-results'}); 
-}); */
 
 foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromApi, (req,res) => {
 	/*res.render('food-entries/food-results',
@@ -31,11 +26,9 @@ foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromA
 		results: res.locals.results,
 		currentPage: 'food',
 		header: `Results for "${req.params.item}"`,
+		username: req.user.username,
 		}); 
 	});
-
-//route for specific day
-//foodRoutes.get('/:date', authHelpers.loginRequired, foodController.indexOld);
 
 foodRoutes.post('/add', authHelpers.loginRequired, (req,res) => {
 	res.redirect(`/food/add/${req.body.item}`);
