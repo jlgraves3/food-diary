@@ -5,10 +5,11 @@ const foodController = {};
 //const stringDate = moment().format('dddd, MMMM Do YYYY');
 //const parsedDate = moment().format('YYYY-MM-DD');
 
+var today = moment().format('YYYY-MM-DD');
+var yesterday = moment().add(-1,'day').format('YYYY-MM-DD');
+
 
 foodController.index = (req,res) => {
-	var today = moment().format('YYYY-MM-DD');
-	var yesterday = moment().add(-1,'day').format('YYYY-MM-DD');
 	foodEntry.dailyCals(today,req.user.id)
 	.then((total) =>
 		foodEntry.findAll(today,req.user.id)
@@ -18,7 +19,7 @@ foodController.index = (req,res) => {
 				date: moment(today).format('dddd, MMMM Do YYYY'),
 				totalCals: total.sum,
 				yesterday: yesterday,
-				currentPage: 'food-index'
+				currentPage: 'food'
 			});
 		}).catch(err => {
 	      console.log(err);
@@ -45,11 +46,11 @@ foodController.indexOld = (req,res) => {
 } 
 
 foodController.show = (req,res) => {
-	foodEntry.findById(req.params.id)
+	foodEntry.findById(req.params.id, today, req.user.id)
 	.then(entry => {
 		res.render('food-entries/food-single', {
 			data: entry,
-			currentPage: 'food-single',
+			currentPage: 'food',
 		});
 	}).catch(err => {
       console.log(err);
@@ -73,21 +74,16 @@ foodController.create = (req,res) => {
 }
 
 foodController.edit = (req,res) => {
-	foodEntry.findById(req.params.id)
+	foodEntry.findById(req.params.id, today, req.user.id)
 	.then(entry => {
 		res.render('food-entries/food-update', {
 			data: entry,
+			currentPage: 'food'
 		});
 	}).catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
-}
-
-foodController.archive = (req,res) => {
-	var date = req.params.date;
-	var lastweek = [];
-
 }
 
 foodController.update = (req,res) => {
@@ -115,10 +111,5 @@ foodController.delete = (req,res) => {
       res.status(500).json(err);
     });
 }
-
-foodController.archive = (req,res) => {
-	res.render('food-entries/archive', {});
-}
-
 
 module.exports = foodController;

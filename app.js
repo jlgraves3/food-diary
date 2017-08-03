@@ -53,6 +53,8 @@ const userRoutes = require('./routes/user-routes');
 app.use('/user', userRoutes);
 const statsRoutes = require('./routes/stats-routes');
 app.use('/stats',statsRoutes);
+const archiveRoutes = require('./routes/archive-routes');
+app.use('/archive',archiveRoutes);
 
 // Error handler!
 app.get('*', (req, res) => {

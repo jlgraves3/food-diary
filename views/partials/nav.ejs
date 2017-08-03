@@ -1,8 +1,12 @@
 <nav>
 <ul>
 
+	<% if (currentPage === 'food') { %>
+		<li id='home' class='current-page'><a href='/food'>Food</a></li>
+	<% } else { %>
+		<li id='home'><a href='/food'>Food</a></li>
+	<% } %>
 
-	<li id='home'><a href='/food'>Food</a></li>
 
 	<% if (currentPage === 'archive') { %>
 		<li id='archive' class='current-page'><a href='/'>Archive</a></li>

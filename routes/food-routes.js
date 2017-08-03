@@ -35,13 +35,12 @@ foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromA
 	});
 
 //route for specific day
-foodRoutes.get('/:date', authHelpers.loginRequired, foodController.indexOld);
+//foodRoutes.get('/:date', authHelpers.loginRequired, foodController.indexOld);
 
 foodRoutes.post('/add', authHelpers.loginRequired, (req,res) => {
 	res.redirect(`/food/add/${req.body.item}`);
 });
 
-foodRoutes.get('/archive', foodController.archive);
 foodRoutes.get('/:id/edit', foodController.edit);
 foodRoutes.get('/:id',foodController.show);
 foodRoutes.put('/:id',foodController.update);

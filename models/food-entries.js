@@ -11,8 +11,13 @@ foodEntry.findAll = (date,userid) => {
 	`, [date,userid]);
 }
 
-foodEntry.findById = id => {
-	return db.oneOrNone(`SELECT * FROM food_entries WHERE id = $1`,[id]);
+foodEntry.findById = (id,date,userid) => {
+	return db.oneOrNone(`
+		SELECT * FROM food_entries 
+		WHERE id = $1 AND 
+		date = $2 AND
+		user_id = $3`
+		,[id,date,userid]);
 } 
 
 foodEntry.create = (entry, userid) => {

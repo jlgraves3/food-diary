@@ -77,7 +77,7 @@ input {
 	background-color: #C5E3E3;
 }
 
-input[type=submit] {
+input[type=submit]{
 	background-color: #0E94A1;
 	color: white;
 	border: none;
@@ -89,6 +89,38 @@ input[type=submit]:hover {
 	border: none;
 	transition: 0.5s;
 }
+
+ .button {
+ 	font-size: 18px;
+ 	border-radius: 5px;
+ 	background-color: #0E94A1;
+	color: white;
+	border: none;
+	padding: 12px 20px;
+	display: inline-block;
+	margin: 10px;
+	box-sizing: border-box;
+ }
+
+ .button:hover {
+ 	background-color: #13CAD5;
+	border: none;
+	transition: 0.5s;
+ }
+
+ .edit-div {
+ 	display: flex;
+ 	flex-direction: row;
+ 	justify-content: flex-end;
+ }
+
+ .single-div {
+ 	display: flex;
+ 	flex-direction: column;
+ 	margin: 50px 20%;
+ 	border-radius: 5px;
+ 	border: 2px solid #13CAD5;
+ }
 
 input:-webkit-autofill,
 textarea:-webkit-autofill, 
@@ -250,7 +282,13 @@ select {
 	text-align: left;
 	color:  #223647;
 	background-color: #C5E3E3;
+}
 
+.single-div h3  {
+	color: #0E94A1;
+	font-size: 20px;
+	text-align: center;
+	margin: 10px;
 }
 
 
