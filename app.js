@@ -51,6 +51,8 @@ const authRoutes = require('./routes/auth-routes');
 app.use('/auth', authRoutes);
 const userRoutes = require('./routes/user-routes');
 app.use('/user', userRoutes);
+const statsRoutes = require('./routes/stats-routes');
+app.use('/stats',statsRoutes);
 
 // Error handler!
 app.get('*', (req, res) => {

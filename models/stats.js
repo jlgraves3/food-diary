@@ -1,16 +1,18 @@
 const db = require('../db/config');
-const moment = require('../moment');
 const Stats = {};
 
 
-Stats.monthlyCals = (userid,month) => {
-	return db.query(`
-		SELECT date, cals FROM food_entries
+Stats.monthlyCals = (userid,start,end) => {
+	console.log('monthly cals');
+	var returnVal = db.query(`
+		SELECT * FROM food_entries
 		WHERE user_id = $1 AND 
-		date >= `2017-$2-01` AND date < `2017-$3-01`
-	`,[userid,month,month+1]);
+		date > $2 AND date < $3
+	`,[userid,start,end]);
+	console.log(JSON.stringify(returnVal));
+	return returnVal;
 }
 
-
-
 module.exports = Stats;
+
+//
