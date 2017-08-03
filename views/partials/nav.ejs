@@ -1,8 +1,22 @@
 <nav>
 <ul>
+
+
 	<li id='home'><a href='/food'>Food</a></li>
-	<li id='archive'><a href='/'>Archive</a></li>
-	<li id='stats'><a href='/stats'>Stats</a></li>
+
+	<% if (currentPage === 'archive') { %>
+		<li id='archive' class='current-page'><a href='/'>Archive</a></li>
+	<% } else { %>
+		<li id='archive'><a href='/archive'>Archive</a></li>
+	<% } %>
+
+
+	<% if (currentPage === 'stats') { %>	
+		<li id='stats' class='current-page'><a href='/stats'>Stats</a></li>
+	<% } else { %>
+		<li id='stats'><a href='/stats'>Stats</a></li>
+	<% } %>
+	
 
 	<% if (currentPage === 'profile') { %>
 		<li id='profile' class='current-page'><a href='/user'>Profile</a></li>

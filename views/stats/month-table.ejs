@@ -1,13 +1,33 @@
 <% include ../partials/boilerplate %>
 
-<svg width="960" height="500"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<h1>Month</h1>
+
+<canvas id="myLineChart" width="400" height="400"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+
+
 <script>
+var dates = <%=dates%>;
+var cals = <%=cals%>;
 
-var svg = d3.select('svg'),
-		margin = {top: 20, right: 20, bottom: 30, left: 50},
-		width = +svg.attr(width)
+console.log(typeof dates);
 
+	var ctx = document.getElementById("myLineChart").getContext('2d');
+	var myLineChart = new Chart(ctx, {
+		type: 'line',
+		data: {
+			labels: dates,
+			datasets: [{
+				label: 'calories',
+				backgroundColor: 'red',
+				borderColor: 'black',
+				data: cals,
+			}]
+		},
+		options: {}
+	});
+</script>
 
 
 <% include ../partials/end %>

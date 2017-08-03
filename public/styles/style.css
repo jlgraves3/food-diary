@@ -116,6 +116,10 @@ h1 {
 	text-align: center;	
 }
 
+#myLineChart {
+	background-color: yellow;
+}
+
 .headers {
 	font-size: 14px;
 	display: flex;
