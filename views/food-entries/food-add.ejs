@@ -1,26 +1,31 @@
 <% include ../partials/boilerplate %>
 
-	<h1>Add Item</h1>
+	<h1 class='add-header'>Add Item</h1>
 
 	<div class='form-div'>
-		<form method='POST' action='/food/add' class='search'>
-			<input name='item' type='text' placeholder='item'>
-			<input type='submit' value='search' />
-		</form>
-		
-		<form method='POST' action='/food' class='add-form'>
-			<span>time</span><input name='time' type='time' placeholder='time' required />
-			<span>item</span><input name='name' type='text' placeholder='item' required />
-			<span>calories</span><input name='cals' type='number' placeholder='calories' required />
-			<span>details</span><input name='details' type='text' placeholder='details' />
-			<input type='submit' value='add' />
-		</form>
+
+		<div class='search-div'>
+			<form method='POST' action='/food/add' class='search'>
+
+				<input name='item' type='text' placeholder='item'>
+				<input type='submit' value='search' class='button'/>
+				
+			</form>
+		</div>
+			
+		<div class='add-div'>
+			<form method='POST' action='/food' class='add-form'>
+				<input name='time' type='time' placeholder='time' required />
+				<input name='name' type='text' placeholder='item' required />
+				<input name='cals' type='number' placeholder='calories' required />
+				<input name='details' type='text' placeholder='details' />
+				<input type='submit' value='add' class='button'/>
+			</form>
+		</div>
+
 	</div>
 
-	<% if (results) { %>
-		<% include ./food-results %>
-	<% } %>
-
+	
 	<a href='/food'>Cancel</a>
 
 <% include ../partials/end %>

@@ -1,2 +1,16 @@
+<script>
+	const moment = require('moment');
+	function parseTime = time => moment(time).format('h:mm A');
+
+
+	var times = $('.time');
+
+	times.forEach(function (each) {
+		each.innerHTML = parseTime(each.innerHTML); 
+		}	
+	);
+
+</script>
+
 </body>
 </html>

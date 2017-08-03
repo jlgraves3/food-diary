@@ -11,12 +11,12 @@
 	</div>
 
 	<% for (let food of data) { %>
+
 		<div class='entry'>
-			<% var sfx = food.time > '11:59:59' ? 'PM' : 'AM' %>
-			<h2 class='time-col'><%= food.time %></h2>
+			<h2 class='time-col time'><%= food.time %></h2>
 			<h2 class='name-col'><%= food.name %></h1>
 			<h2 class='cals-col'><%= food.cals %> calories</h2>
-			<a href='/food/<%=food.id%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
+			<a class ='details-col' href='/food/<%=food.id%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
 </a>
 		</div>
 	<% } %>

@@ -12,7 +12,7 @@ foodRoutes.post('/',authHelpers.loginRequired, foodController.create);
 
 foodRoutes.get('/add', authHelpers.loginRequired, (req,res) => {
 	res.render('food-entries/food-add',{
-		currentPage: 'food-add',
+		currentPage: 'food',
 		results: null,
 	});
 });
@@ -27,9 +27,10 @@ foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromA
 	/*res.render('food-entries/food-results',
 		{results: res.locals.results,
 		 currentPage: 'food-results'}); */
-	res.render('food-entries/food-add', {
+	res.render('food-entries/food-results', {
 		results: res.locals.results,
-		currentPage: 'food-add'
+		currentPage: 'food',
+		header: `Results for "${req.params.item}"`,
 		}); 
 	});
 

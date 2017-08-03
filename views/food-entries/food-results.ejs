@@ -1,9 +1,20 @@
+<% include ../partials/boilerplate %>
 
-	<form method='POST' action='/food/add'>
-	<span>item</span>
-	<select>
-	<% for (let result of results) { %>
-		<option value='<%= result.id%>'><%= result.fields.item_name %> <%= result.fields.brand_name %></option>
+	<a href='/food/add' class='back'>
+		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+	</a>
+	
+	<h1><%= header %></h1>
+	<!--<form method='POST' action='/food/add' class='results-form'> -->
+		<% for (let result of results) { %>
+			<div class='entry'>
+			<!--<option value='<%= result.id%>'>-->
+				<h2 class='time-col'><%= result.fields.item_name %> <%= result.fields.brand_name %></h2> 
+				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> Calories</h2>
+			</div>
 		<% } %>
-	</select>
+			
 
+	<!--</form> -->
+
+<% include ../partials/end %>
