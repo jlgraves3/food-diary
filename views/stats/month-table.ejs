@@ -1,6 +1,11 @@
 <% include ../partials/boilerplate %>
 
+<a href='/stats' class='back'>
+		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+	</a>
+
 <h1><%=month%></h1>
+<h2 class='header-2'>Average Calories Per Day: <%=Math.round(avgCals) %></h2>
 
 <% include graph %>
 

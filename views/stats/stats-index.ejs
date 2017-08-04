@@ -2,14 +2,14 @@
 
 <h1>Stats</h1>
 
-<h2 class='month-header'>This Week</h2>
-
+<h2 class='header-2'>This Week</h2>
+<h3>Average Calories: <%=avgCals%></h3>
 <% include graph %>
 
-<h2 class='month-header'>By Month</h2>
+<h2 class='header-2'>By Month</h2>
 
 <div class='month-div'>
-	<% for(let month of months) { %>
+	<% for (let month of months) { %>
 		<a href='/stats/<%=month.number%>'>
 		<div class='month entry'>
 			<h2 class=''><%=month.string%></h1>
