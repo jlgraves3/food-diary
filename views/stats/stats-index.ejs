@@ -1,3 +1,14 @@
 <% include ../partials/boilerplate %>
+
 <h1>Stats Index</h1>
+
+	<h2>By Month</h2>
+	<% for(let month of months) { %>
+		<a href='/stats/<%=month.number%>'>
+		<div class='month entry'>
+			<h2 class='time-col'><%=month.string%></h1>
+		</div>
+		</a>
+	<% } %>
+
 <% include ../partials/end %>

@@ -5,7 +5,6 @@
 	</a>
 
 	<h1><%= header %></h1>
-	<!--<form method='POST' action='/food/add' class='results-form'> -->
 		<% var i=0 %>
 		<% for (let result of results) { %>
 			<div class='entry result' id='<%=i%>'>
@@ -18,11 +17,11 @@
 				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> Calories</h2>
 
 
-				<form method='POST' action='/food/result/add' class='result-add details-col'>
+				<form method='POST' action='/result/add' class='result-add details-col'>
 					<input name='name' type='hidden' value='<%=result.fields.item_name%>' />
 					<input name='cals' type='hidden' value='<%=Math.round(result.fields.nf_calories)%>' />
 					<input name='details' type='hidden' value='<%=result.fields.brand_name%>' />
-					<input class='result-submit' type='submit' value='+' / >
+					<input id='result-submit' type='submit' value='+' / >
 				</form>
 
 

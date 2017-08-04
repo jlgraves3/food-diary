@@ -56,6 +56,9 @@ app.use('/stats',statsRoutes);
 const archiveRoutes = require('./routes/archive-routes');
 app.use('/archive',archiveRoutes);
 
+const resultRoutes = require('./routes/result-routes');
+app.use('/result',resultRoutes);
+
 // Error handler!
 app.get('*', (req, res) => {
     res.status(404).send('not found!');

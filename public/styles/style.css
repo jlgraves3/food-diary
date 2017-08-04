@@ -335,6 +335,23 @@ select {
 	color:  #13CAD5;
 }
 
+#result-submit {
+	font-size: 38px;
+	padding: 0;
+	background-color: rgba(0,0,0,0);
+	margin-left: 40px;
+}
+
+#result-submit:hover {
+	color: #223647;
+	transition: 0.5s;
+}
+
 .chart-container {
 	margin: 0 auto;
+}
+
+
+.month {
+	width: 150px;
 }

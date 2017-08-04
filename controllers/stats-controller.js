@@ -11,7 +11,6 @@ function formatDates(dates) {
 statsController.month = (req,res) => {
 	var month = req.params.month
 	var first = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
-	console.log(first);
 	var last = moment(first).add(1,'month').add(1,'day').format('YYYY-MM-DD');
 	Stats.allCals(req.user.id,first,last)
 	.then(monthData => {
@@ -27,6 +26,7 @@ statsController.month = (req,res) => {
 			cals: cals,
 			currentPage: 'stats',
 			username: req.user.username,
+			month: moment(`2017-${month}-01`).format('MMMM')
 		});
 	}).catch(err => {
 		console.log(err);
@@ -35,9 +35,18 @@ statsController.month = (req,res) => {
 }
 
 statsController.index = (req,res) => {
+	var pastTwelveMonths = [];
+	for (var i=0;i<12;i++) {
+		pastTwelveMonths.push(
+			{
+			number: moment().subtract(i,'month').format('M'),
+			string: moment().subtract(i,'month').format('MMMM')
+		});
+	}
 	res.render('stats/stats-index',{
 		currentPage: 'stats',
 		username: req.user.username,
+		months : pastTwelveMonths
 	});
 }
 
