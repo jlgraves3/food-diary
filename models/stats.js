@@ -9,6 +9,7 @@ Stats.allCals = (userid,start,end) => {
 		WHERE user_id = $1 AND 
 		date > $2 AND date < $3
 		GROUP BY date
+		ORDER BY date
 	`,[userid,start,end]);
 }
 

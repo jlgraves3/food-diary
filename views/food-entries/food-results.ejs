@@ -9,37 +9,26 @@
 		<% var i=0 %>
 		<% for (let result of results) { %>
 			<div class='entry result' id='<%=i%>'>
-				<h2 class='time-col'><%= result.fields.item_name %> <%= result.fields.brand_name %></h2> 
+
+				<% if (result.fields.item_name.length > 70) { %>
+					<h2 class='time-col'><%= result.fields.item_name.slice(0,80) %>... <%= result.fields.brand_name %></h2> 
+				<% } else { %>
+					<h2 class='time-col'><%= result.fields.item_name %> <%= result.fields.brand_name %></h2> 
+				<% } %>
 				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> Calories</h2>
+
+
+				<form method='POST' action='/food/result/add' class='result-add details-col'>
+					<input name='name' type='hidden' value='<%=result.fields.item_name%>' />
+					<input name='cals' type='hidden' value='<%=Math.round(result.fields.nf_calories)%>' />
+					<input name='details' type='hidden' value='<%=result.fields.brand_name%>' />
+					<input class='result-submit' type='submit' value='+' / >
+				</form>
+
+
 			</div>
 			<% i+=1 %>
-		<% } %>
-	
-	<script>
-		/*function addResult(req,res) {
-			res.render('food',{
-
-			})
-		}
-
-		function getResult() {
-			//let name = $(this).innerHTML
-			id = $(this).attr('id');
-			
-			console.log('id');
-			let data = {
-				name: results[id].fields.item_name,
-				cals:  Math.round(results[id].fields.nf_calories),
-				details: results[id].fields.nf_total_fat,
-			}
-			
-		}
-
-
-		$('.result').click(getResult); */
-
-
-	</script>			
+		<% } %>	
 
 	<!--</form> -->
 
