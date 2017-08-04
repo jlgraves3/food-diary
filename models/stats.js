@@ -13,9 +13,10 @@ Stats.allCals = (userid,start,end) => {
 	`,[userid,start,end]);
 }
 
-Stats.avgCals = (userid,start,end) => {
+Stats.totalCals = (userid,start,end) => {
 	return db.query(`
-		SELECT AVG(cals) FROM food_entries
+		SELECT SUM(cals)
+		FROM food_entries
 		WHERE user_id = $1 AND 
 		date > $2 AND date < $3
 	`,[userid,start,end]);

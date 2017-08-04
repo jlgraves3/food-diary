@@ -10,9 +10,9 @@
 			<div class='entry result' id='<%=i%>'>
 
 				<% if (result.fields.item_name.length > 70) { %>
-					<h2 class='time-col'><%= result.fields.item_name.slice(0,80) %>... <%= result.fields.brand_name %></h2> 
+					<h2 class='time-col'><%= result.fields.item_name.slice(0,80) %>... : <%= result.fields.brand_name %></h2> 
 				<% } else { %>
-					<h2 class='time-col'><%= result.fields.item_name %> <%= result.fields.brand_name %></h2> 
+					<h2 class='time-col'><%= result.fields.item_name %> : <%= result.fields.brand_name %></h2> 
 				<% } %>
 				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> Calories</h2>
 
@@ -28,7 +28,5 @@
 			</div>
 			<% i+=1 %>
 		<% } %>	
-
-	<!--</form> -->
 
 <% include ../partials/end %>

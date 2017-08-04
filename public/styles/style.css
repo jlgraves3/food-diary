@@ -5,15 +5,13 @@ body {
 	color: #223647;
 }
 
-h1 {
-	font-size: 28px;
+a {
+	text-decoration: none;
+	color: white;
 }
 
-iframe {
-	width: 30%;
-	height: 30%;
-}
 
+/* NAV STYLES */
 nav {
 	display: flex;
 	flex-direction: row;
@@ -21,7 +19,6 @@ nav {
 	background-color: #223647;
 	padding: 15px;
 }
-
 nav a {
 	color: #F3F2ED;
 	font-size: 16px;
@@ -30,24 +27,23 @@ nav a:hover {
 	color: #13CAD5;
 	transition: 0.5s;
 } 
-
-a {
-	text-decoration: none;
-	color: white;
-}
-
 ul {
 	list-style: none;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
-
 li {
 	justify-content: space-between;
 	margin: 10px 50px;
 }
+.current-page a {
+	color: #13CAD5;
+}
 
+
+
+/* DIV STYLES */
 .entry {
 	margin: 5px 30px;
 	padding: 25px;
@@ -59,47 +55,29 @@ li {
 	background: linear-gradient(to right, #0E94A1 , #13CAD5);
 	color: white;
 }
-
 .entry a:hover {
 	color: #223647;
 	transition: 0.5s;
 }
 
-
+.archive-div {
+	justify-content: center;
+	margin: 10px 10%;
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 .archive {
+	width: 80%;
 	padding: 15px;
 }
-.current-page a {
-	color: #13CAD5;
-}
 
-input {
-	padding: 4px;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 18px;
-	display: block;
-	margin: 10px;
-	border: 2px solid #0E94A1;
-	border-radius: 5px;
-	color: #223647;
-	box-sizing: border-box;
-	background-color: #C5E3E3;
-}
 
-input[type=submit]{
-	background-color: #0E94A1;
-	color: white;
-	border: none;
-	padding: 10px 20px;
-}
 
-input[type=submit]:hover {
-	background-color: #13CAD5;
-	border: none;
-	transition: 0.5s;
-}
 
- .button {
+/* LINKS / BUTTONS */
+.button {
  	font-size: 18px;
  	border-radius: 5px;
  	background-color: #0E94A1;
@@ -110,6 +88,37 @@ input[type=submit]:hover {
 	margin: 10px;
 	box-sizing: border-box;
  }
+.button:hover {
+ 	background-color: #13CAD5;
+	border: none;
+	transition: 0.5s;
+ }
+
+#add-manual {
+	display: block;
+	margin: 50px;
+	color: #13CAD5;
+	text-align: center;
+	font-size: 18px;
+}
+#add-manual:hover {
+	color: #0E94A1;
+	transition: 0.5s;
+}
+#result-submit {
+	font-size: 38px;
+	padding: 0;
+	background-color: rgba(0,0,0,0);
+	margin-left: 40px;
+}
+
+#result-submit:hover {
+	color: #223647;
+	transition: 0.5s;
+}
+
+
+
 
 
 .home-div {
@@ -118,51 +127,29 @@ input[type=submit]:hover {
 	align-items: center;
 	margin-top: 100px;
 }
-
- .button:hover {
- 	background-color: #13CAD5;
-	border: none;
-	transition: 0.5s;
- }
-
- .edit-div {
+.edit-div {
  	display: flex;
  	flex-direction: row;
  	justify-content: flex-end;
- }
+}
 
- .single-div {
+.single-div {
  	display: flex;
  	flex-direction: column;
  	margin: 50px 20%;
  	border-radius: 15px;
  	color: white;
- }
-
-input:-webkit-autofill,
-textarea:-webkit-autofill, 
-select:-webkit-autofill {
-	background-color: white;
-	 -webkit-text-fill-color: #223647;
-	 transition: background-color 5000s ease-in-out 0s;
 }
 
-/* HEADERS */
 
+
+/* HEADERS */
 h1 {
 	text-align: center;
 	font-size: 28px;
 	margin: 25px;
 	color: #0E94A1;
 	font-weight: normal;
-}
-
-.date-header {
-	margin-top: 25px;
-}
-
-.add-header {
-	text-align: center;	
 }
 
 .headers {
@@ -174,6 +161,25 @@ h1 {
 	background: none;
 	color:  #13CAD5;
 }
+.header-2 {
+	font-size: 24px;
+	text-align: center;
+	color:  #13CAD5;
+	margin: 20px;
+	text-transform: uppercase;
+}
+.single-div h3  {
+	font-size: 20px;
+	text-align: center;
+	margin: 10px;
+}
+
+.single-div h1 {
+	color:  #223647;	
+}
+
+
+/*  */
 
 .back {
 	color: #0E94A1;
@@ -189,6 +195,7 @@ h1 {
 #total-cals {
 	background: #0E94A1;
 	padding: 15px;
+	margin-bottom: 60px;
 }
 
 form {
@@ -251,9 +258,8 @@ form {
 
 /* PROFILE STYLES */
 .profile {
-	border: 3px solid #13CAD5;
 	border-radius: 10px;
-	padding: 20px;
+	padding: 40px;
 	display: flex;
 	flex-direction: column;
 	margin: 50px 20%;
@@ -261,6 +267,7 @@ form {
 
 .profile h1 {
 	font-size: 36px; 
+	color: #223647;
 	padding: 10px;
 	text-transform: uppercase;
 	margin: 0 auto;
@@ -274,26 +281,57 @@ form {
 }
 
 /* FORM STYLES */
+input {
+	padding: 4px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	display: block;
+	margin: 10px auto;
+	border: 2px solid #13CAD5;
+	border-radius: 5px;
+	color: #223647;
+	box-sizing: border-box;
+}
+
+input[type=submit]{
+	margin: 10px auto;
+	background-color: #0E94A1;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+}
+
+input[type=submit]:hover {
+	background-color: #13CAD5;
+	border: none;
+	transition: 0.5s;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill, 
+select:-webkit-autofill {
+	background-color: white;
+	 -webkit-text-fill-color: #223647;
+	 transition: background-color 5000s ease-in-out 0s;
+}
+
 .form-div {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-content: center;
-}
-
-.search-div {
-	flex: 2;
-	text-align: center;
-}
-
-.add-div {
-	flex: 2;
-	text-align: center;
+	background-color: red;
 }
 
 .form-div input {
 	display: block;
-	width: 60%;
+	width: 80%;
+}
+
+.search {
+	margin-top: 50px;
+}
+.search input {
+	width: 70%;
 }
 
 .auth-div form {
@@ -303,7 +341,7 @@ form {
 	margin-top: 10%;
 	text-align: center;
 }
-
+/*
 select {
 	border: 2px solid  #0E94A1;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -313,64 +351,41 @@ select {
 	text-align: left;
 	color:  #223647;
 	background-color: #C5E3E3;
-}
+}*/
 
-.single-div h3  {
-	font-size: 20px;
-	text-align: center;
-	margin: 10px;
-}
 
-.single-div h1 {
-	color:  #223647;	
-}
 
 .single-div .button {
 	background-color:  #223647;
 }
-
-
 .single-div .button:hover {
 	background-color:  #223647;
 	color:  #13CAD5;
 }
 
-#result-submit {
-	font-size: 38px;
-	padding: 0;
-	background-color: rgba(0,0,0,0);
-	margin-left: 40px;
-}
-
-#result-submit:hover {
-	color: #223647;
-	transition: 0.5s;
-}
 
 .chart-container {
 	margin: 0 auto;
 }
 
 
-.month-header {
-	font-size: 24px;
-	text-align: center;
-	color:  #13CAD5;
-	margin: 20px;
-	text-transform: uppercase;
-}
+
 .month {
 	width: 130px;
 	padding: 10px;
 	margin: 5px 10px;
+	background: #0E94A1;
 }
 
 .month:hover {
 	background: #13CAD5;
+	transition: 0.5s;
 }
 
 .month-div {
+	justify-content: center;
 	margin: 10px 10%;
+	margin-bottom: 50px;
 	align-self: center;
 	display: flex;
 	flex-direction: row;

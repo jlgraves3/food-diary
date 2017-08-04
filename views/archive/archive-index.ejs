@@ -3,11 +3,14 @@
 	<a href='#'>Month</a>
 
 	<h1>Archive</h1>
+	<div class='archive-div'>
 
 	<% for (let day of pastDays)  { %>
 		<div class='entry archive'>
-			<h2><%=day.display%></h2>
-			<a class ='details-col' href='/archive/<%=day.url%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
+			<a href='/archive/<%=day.url%>'>
+			<h2><%=day.display%></h2></a>
 		</div>
 	<% } %>
+
+</div>
 <% include ../partials/end %>

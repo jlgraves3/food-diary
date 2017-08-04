@@ -7,7 +7,7 @@ const today = moment().format('YYYY-MM-DD');
 
 archiveController.index = (req,res) => {
 	var past = [];
-	for(var i=-1;i>-15;i--) {
+	for(var i=-1;i>-31;i--) {
 		let urlFormat = moment(today).add(i,'day').format('YYYY-MM-DD');
 		let display = moment(today).add(i,'day').format('dddd, MMMM Do YYYY');
 		past.push({

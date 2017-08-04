@@ -10,24 +10,30 @@ function formatDates(dates) {
 
 statsController.month = (req,res) => {
 	var month = req.params.month
-	var first = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
-	var last = moment(first).add(1,'month').add(1,'day').format('YYYY-MM-DD');
-	Stats.allCals(req.user.id,first,last)
-	.then(monthData => {
-		console.log(monthData);
-		let cals = [];
-		let dates = [];
-		monthData.forEach((i) => {
-			cals.push(i.daily_sum + '');
-			dates.push(i.date);
-		})
+	var start = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
+	var end = moment(start).add(1,'month').add(2,'day').format('YYYY-MM-DD');
+	monthLen = 	 moment(`2017-${month}`,'YYYY-MM').daysInMonth();
+
+	Stats.totalCals(req.user.id,start,end).then(totalCals => {
+		Stats.allCals(req.user.id,start,end)
+		.then(monthData => {
+			console.log("****TOTAL CALS!!!: " + JSON.stringify(totalCals));
+			let cals = [];
+			let dates = [];
+			monthData.forEach((i) => {
+				cals.push(i.daily_sum + '');
+				dates.push(i.date);
+			});
 		res.render('stats/month-table', {
 			dates: formatDates(dates),
 			cals: cals,
-			currentPage: 'stats',
+			avgCals: totalCals[0].sum/monthLen,
+			currentPage: null,
 			username: req.user.username,
 			month: moment(`2017-${month}-01`).format('MMMM')
 		});
+	})
+
 	}).catch(err => {
 		console.log(err);
 		res.status(500).json({error:err});
@@ -35,7 +41,40 @@ statsController.month = (req,res) => {
 }
 
 statsController.index = (req,res) => {
-	var pastTwelveMonths = [];
+	var start = moment().format('YYYY-MM-DD');
+	var end = moment().subtract(7,'day').format('YYYY-MM-DD');
+	console.log(start,end);
+
+	Stats.totalCals(req.user.id,start,end).then(totalCals => {
+		Stats.allCals(req.user.id,start,end)
+
+		.then(weekData => {
+			console.log(weekData);
+			let cals = [];
+			let dates = [];
+			weekData.forEach((i) => {
+				cals.push(i.daily_sum + '');
+				dates.push(i.date);
+			});
+
+		res.render('stats/stats-index', {
+			dates: formatDates(dates),
+			cals: cals,
+			avgCals: totalCals[0].sum/7,
+			currentPage: 'stats',
+			username: req.user.username,
+			months: pastYearMonths(),
+		});
+	});
+
+	}).catch(err => {
+		console.log(err);
+		res.status(500).json({error:err});
+	});
+}
+
+function pastYearMonths() {
+	let pastTwelveMonths = [];
 	for (var i=0;i<12;i++) {
 		pastTwelveMonths.push(
 			{
@@ -43,11 +82,9 @@ statsController.index = (req,res) => {
 			string: moment().subtract(i,'month').format('MMMM')
 		});
 	}
-	res.render('stats/stats-index',{
-		currentPage: 'stats',
-		username: req.user.username,
-		months : pastTwelveMonths
-	});
+	return pastTwelveMonths;
 }
+
+
 
 module.exports = statsController;

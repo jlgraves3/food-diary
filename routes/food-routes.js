@@ -19,9 +19,6 @@ foodRoutes.get('/add', authHelpers.loginRequired, (req,res) => {
 });
 
 foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromApi, (req,res) => {
-	/*res.render('food-entries/food-results',
-		{results: res.locals.results,
-		 currentPage: 'food-results'}); */
 	res.render('food-entries/food-results', {
 		results: res.locals.results,
 		currentPage: 'food',
@@ -30,13 +27,19 @@ foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromA
 		}); 
 	});
 
+foodRoutes.get('/add-manual', authHelpers.loginRequired, (req,res) => {
+	res.render('food-entries/add-manual', {
+		currentPage: null,
+	})
+})
+
 foodRoutes.post('/add', authHelpers.loginRequired, (req,res) => {
 	res.redirect(`/food/add/${req.body.item}`);
 });
 
-foodRoutes.get('/:id/edit', foodController.edit);
-foodRoutes.get('/:id',foodController.show);
-foodRoutes.put('/:id',foodController.update);
-foodRoutes.delete('/:id',foodController.delete);
+foodRoutes.get('/:id/edit', authHelpers.loginRequired, foodController.edit);
+foodRoutes.get('/:id', authHelpers.loginRequired, foodController.show);
+foodRoutes.put('/:id', authHelpers.loginRequired, foodController.update);
+foodRoutes.delete('/:id', authHelpers.loginRequired, foodController.delete);
 
 module.exports = foodRoutes;

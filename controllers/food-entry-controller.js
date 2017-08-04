@@ -2,23 +2,21 @@ const foodEntry  = require('../models/food-entries.js');
 const moment = require('moment');
 const foodController = {};
 
-//const stringDate = moment().format('dddd, MMMM Do YYYY');
-//const parsedDate = moment().format('YYYY-MM-DD');
-
 var today = moment().format('YYYY-MM-DD');
 var yesterday = moment().add(-1,'day').format('YYYY-MM-DD');
 
+parseTime = (entry) => {
+	let time = entry.time;
+	let HH = time.slice(0,2);
+	let MM = time.slice(3,5);
+	let A = HH >= 12 ? 'PM' : 'AM';
+	hh = HH % 12;
+	hh = hh === 0 ? 12 : hh;
+	entry.formattedTime = `${hh}:${MM} ${A}`;
+}
 
-parseTime = (entries) => {
-	for (let entry of entries) {
-		let time = entry.time;
-		let HH = time.slice(0,2);
-		let MM = time.slice(3,5);
-		let A = HH >= 12 ? 'PM' : 'AM';
-		hh = HH % 12;
-		hh = hh === 0 ? 12 : hh;
-		entry.formattedTime = `${hh}:${MM} ${A}`;
-	}
+parseTimeMap = (entries) => {
+	entries.map(parseTime);
 };
 
 foodController.index = (req,res) => {
@@ -26,7 +24,7 @@ foodController.index = (req,res) => {
 	.then((total) =>
 		foodEntry.findAll(today,req.user.id)
 		.then(entries => {
-			parseTime(entries);
+			parseTimeMap(entries);
 			res.render('food-entries/food-index', {
 				data: entries,
 				date: moment(today).format('dddd, MMMM Do YYYY'),
@@ -41,7 +39,7 @@ foodController.index = (req,res) => {
 	    }));
 } 
 
-
+/*
 foodController.indexOld = (req,res) => {
 	foodEntry.dailyCals(req.params.date,req.user.id)
 	.then((total) =>
@@ -51,18 +49,19 @@ foodController.indexOld = (req,res) => {
 				data: entries,
 				date: moment(req.params.date).format('dddd, MMMM Do YYYY'),
 				totalCals: total.sum,
-				currentPage: 'day-single',
+				currentPage: null,
 				username: req.user.username,
 			});
 		}).catch(err => {
 	      console.log(err);
 	      res.status(500).json(err);
 	    }));
-} 
-
+} */
+ 
 foodController.show = (req,res) => {
 	foodEntry.findById(req.params.id, today, req.user.id)
 	.then(entry => {
+		parseTime(entry);
 		res.render('food-entries/food-single', {
 			data: entry,
 			currentPage: 'food',

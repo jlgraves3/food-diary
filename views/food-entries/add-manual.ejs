@@ -1,0 +1,20 @@
+
+<% include ../partials/boilerplate %>
+	
+	<a href='/food/add' class='back'>
+		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+	</a>
+
+
+	<h1 class='add-header'>Add Item</h1>
+
+			<form class='search' method='POST' action='/food' class='add-form'>
+				<input name='time' type='time' placeholder='time' required />
+				<input name='name' type='text' placeholder='item' required />
+				<input name='cals' type='number' placeholder='calories' required />
+				<input name='details' type='text' placeholder='details' />
+				<input type='submit' value='add' class='button'/>
+			</form>
+	
+
+<% include ../partials/end %>
