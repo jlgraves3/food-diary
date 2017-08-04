@@ -352,6 +352,27 @@ select {
 }
 
 
+.month-header {
+	font-size: 24px;
+	text-align: center;
+	color:  #13CAD5;
+	margin: 20px;
+	text-transform: uppercase;
+}
 .month {
-	width: 150px;
+	width: 130px;
+	padding: 10px;
+	margin: 5px 10px;
+}
+
+.month:hover {
+	background: #13CAD5;
+}
+
+.month-div {
+	margin: 10px 10%;
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
