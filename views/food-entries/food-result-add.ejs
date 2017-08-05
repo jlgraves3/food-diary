@@ -1,12 +1,13 @@
 <% include ../partials/boilerplate %>
 
-	<h1 class='add-header'>Add Item</h1>
+	<a href='/food/add' class='back'>
+		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+	</a>
 
-	<div class='form-div'>
-			
-		<div class='add-div'>
 
-			<form method='POST' action='/food' class='result-add-form'>
+	<h1>Add Item</h1>
+
+			<form method='POST' action='/food' class='search'>
 				<input name='time' type='time' placeholder='time' required />
 
 				<input name='name' type='text' value='<%=name%>' required />
@@ -15,9 +16,7 @@
 
 				<input type='submit' value='add' class='button'/>
 			</form>
-		</div>
 
-	</div>
 
 	
 	<a href='/food'>Cancel</a>

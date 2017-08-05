@@ -8,6 +8,10 @@ function formatDates(dates) {
 	return dates.map(date => `${moment(date).format('DD')}`);
 }
 
+function formatWeekDates(dates) {
+	return dates.map(date => "\'" +`${moment(date).format('ddd MM D')}` + "\'" );
+}
+
 statsController.month = (req,res) => {
 	var month = req.params.month
 	var start = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
@@ -17,7 +21,6 @@ statsController.month = (req,res) => {
 	Stats.totalCals(req.user.id,start,end).then(totalCals => {
 		Stats.allCals(req.user.id,start,end)
 		.then(monthData => {
-			console.log("****TOTAL CALS!!!: " + JSON.stringify(totalCals));
 			let cals = [];
 			let dates = [];
 			monthData.forEach((i) => {
@@ -40,16 +43,16 @@ statsController.month = (req,res) => {
 	});
 }
 
+
 statsController.index = (req,res) => {
-	var start = moment().format('YYYY-MM-DD');
-	var end = moment().subtract(7,'day').format('YYYY-MM-DD');
+	var end = "\'" + moment().format('YYYY-MM-DD') + "\'" ;
+	var start = "\'" + moment().subtract(7,'day').format('YYYY-MM-DD') + "\'" ;
 	console.log(start,end);
 
 	Stats.totalCals(req.user.id,start,end).then(totalCals => {
 		Stats.allCals(req.user.id,start,end)
 
 		.then(weekData => {
-			console.log(weekData);
 			let cals = [];
 			let dates = [];
 			weekData.forEach((i) => {

@@ -3,6 +3,15 @@ const Stats = {};
 
 
 Stats.allCals = (userid,start,end) => {
+	let query = `
+		SELECT date, SUM(cals) AS daily_sum
+		FROM food_entries
+		WHERE user_id = ${userid} AND 
+		date > ${start} AND date < ${end}
+		GROUP BY date
+		ORDER BY date
+	`;
+	console.log(query);
 	return db.query(`
 		SELECT date, SUM(cals) AS daily_sum
 		FROM food_entries

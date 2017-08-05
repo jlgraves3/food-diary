@@ -1,6 +1,8 @@
+
 <div class='chart-container' style="position: relative; height:60vh; width:60vw">
 	<canvas id="myLineChart" width="400" height="400"></canvas>
 </div>
+<script src="moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
 
 
@@ -9,7 +11,6 @@
 var dates = [<%=dates%>];
 var cals = [<%=cals%>];
 console.log(cals);
-
 console.log(typeof dates);
 
 	var ctx = document.getElementById("myLineChart").getContext('2d');
@@ -22,12 +23,15 @@ console.log(typeof dates);
 				backgroundColor: 'rgba(0,0,0,0)',
 				borderColor: '#13CAD5',
 				data: cals,
+				fontColor: '#223647',
 			}]
 		},
 		options: {
+			responsive: true,
 			layout: {
 				padding: 10
 			},
+			defaultFontColor: '#223647',
 			spanGaps: true,
 			maintainAspectRatio: false,
 			xAxisId: 'date',
@@ -36,7 +40,7 @@ console.log(typeof dates);
                 	ticks: {
                     	beginAtZero:true
                 	}
-           	 	}]
+           	 	}],
         	}
 		}
 	});

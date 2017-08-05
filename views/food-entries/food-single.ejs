@@ -12,10 +12,10 @@
 	
 
 	<div class='edit-div'>
-		<a href='/food/<%=data.id%>/edit' class='button'>Edit</a>
-		
+		<a id='edit' href='/food/<%=data.id%>/edit'><i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+	</a>
 		<form method='POST' action='/food/<%=data.id%>?_method=delete'>
-			<input class='button' type='submit' value='Delete' />
+			<button id='delete' type='submit' value=''><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
 		</form>
 	</div>
 

@@ -1,17 +1,14 @@
 <% include ../partials/boilerplate %>
 
+	<a href='/food/<%= data.id%>' class='back'>
+		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+	</a>
+
 	<h1>Update Item</h1>
-	<% var date = new Date%>
 	
-	<form method='POST' action='/food/<%= data.id %>?_method=PUT'>
+	<form class='search' method='POST' action='/food/<%= data.id %>?_method=PUT'>
 		<input name='time' type='time' value='<%=data.time%>' />
-
-		<!-- <form>
-			<input name='name' type='text' value='<%=data.name%>' />
-			<input type='submit' value='search' />
-		</form> -->
 		<input name='name' type='text' value='<%=data.name%>' />
-
 		<input name='cals' type='number' value='<%=data.cals%>'  />
 		<input name='details' type='text' value='<%=data.details%>' >
 		<input type='submit' value='update' />
