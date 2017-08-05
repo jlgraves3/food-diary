@@ -1,13 +1,14 @@
 <% include ../partials/boilerplate %>
+
 	<h1>Archive</h1>
-	<div class='archive-div'>
 
 	<% for (let day of pastDays)  { %>
+
 		<div class='entry archive'>
-			<a href='/archive/<%=day.url%>'>
-			<h2><%=day.display%></h2></a>
+			<h2><%=day.display%></h2>
+			<a href='/archive/<%=day.url%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i></a>
 		</div>
+	
 	<% } %>
 
-</div>
 <% include ../partials/end %>

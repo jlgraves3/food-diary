@@ -11,6 +11,7 @@ a {
 }
 
 
+
 /* NAV STYLES */
 nav {
 	display: flex;
@@ -43,40 +44,7 @@ li {
 
 
 
-/* DIV STYLES */
-.entry {
-	margin: 5px 30px;
-	padding: 25px;
-	border-radius: 10px;
-	font-size: 18px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	background: linear-gradient(to right, #0E94A1 , #13CAD5);
-	color: white;
-}
-.entry a:hover {
-	color: #223647;
-	transition: 0.5s;
-}
-
-.archive-div {
-	justify-content: center;
-	margin: 10px 10%;
-	align-self: center;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
-.archive {
-	width: 80%;
-	padding: 15px;
-}
-
-
-
-
-/* LINKS / BUTTONS */
+/* LINKS + BUTTONS */
 .button {
  	font-size: 18px;
  	border-radius: 5px;
@@ -105,32 +73,93 @@ li {
 	color: #0E94A1;
 	transition: 0.5s;
 }
+
 #result-submit {
+	font-family: 'Asap', sans-serif;
 	font-size: 38px;
 	padding: 0;
 	background-color: rgba(0,0,0,0);
 	margin-left: 40px;
+	margin-top: 0;
+	color: white;
 }
 
 #result-submit:hover {
 	color: #223647;
+	cursor: pointer;
+	transition: 0.5s;
+}
+.back {
+	color: #0E94A1;
+	position: absolute; 
+	margin: 20px;
+}
+
+.back:hover {
+	color: #13CAD5;
 	transition: 0.5s;
 }
 
-
-.header-3 {
+#add-item {
+	background: #223647;
+	padding: 8px 10px;
+	color: white;
+	width: 120px;
 	text-align: center;
-	font-size: 20px;
-	margin-bottom: 20px;
-	color: #0E94A1;
+	height: 30px;
 }
 
+#add-button {
+	width: 120px;
+	background-color: yellow;
+}
+
+#add-item i {
+	margin-left: -3px;
+}
+#add-item span {
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 14px;
+	padding-right: 10px;
+}
+
+#add-item:hover {
+	background: #13CAD5;
+	transition: 0.5s;
+}
+
+.single-div .button {
+	background-color:  #223647;
+}
+.single-div .button:hover {
+	background-color:  #223647;
+	color:  #13CAD5;
+}
+
+
+/* DIV STYLES */
+.entry {
+	margin: 5px 30px;
+	padding: 25px;
+	border-radius: 10px;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: linear-gradient(to right, #0E94A1 , #13CAD5);
+	color: white;
+}
+.entry a:hover {
+	color: #223647;
+	transition: 0.5s;
+}
 
 .home-div {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
 .edit-div {
@@ -146,7 +175,7 @@ li {
 	color: #223647; 
 	margin-right: 10px;
 }
-#edit:hover, #delete:hover {
+#edit:hover, #delete:hover, #post-result:hover {
 	color: white;
 	transition: 0.5s;
 	cursor: pointer; 
@@ -158,6 +187,42 @@ li {
  	margin: 50px 20%;
  	border-radius: 15px;
  	color: white;
+}
+.welcome-div {
+	margin-top: 50px;
+	line-height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.archive {
+	width: 60%;
+	justify-content: space-between;
+	margin: 5px auto;
+	padding: 5px 20px;
+}
+
+
+.month {
+	width: 130px;
+	padding: 10px;
+	margin: 5px 10px;
+	background: #0E94A1;
+}
+
+.month:hover {
+	background: #13CAD5;
+	transition: 0.5s;
+}
+
+.month-div {
+	justify-content: center;
+	margin: 10px 10%;
+	margin-bottom: 50px;
+	align-self: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 
@@ -187,6 +252,12 @@ h1 {
 	margin: 20px;
 	text-transform: uppercase;
 }
+.header-3 {
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+	color: #0E94A1;
+}
 .single-div h3  {
 	font-size: 20px;
 	text-align: center;
@@ -197,36 +268,20 @@ h1 {
 	color:  #223647;	
 }
 
-
-/*  */
-
-.back {
-	color: #0E94A1;
-	position: absolute; 
-	margin: 20px;
-}
-
-.back:hover {
-	color: #13CAD5;
-	transition: 0.5s;
-}
-
 #total-cals {
 	background: #0E94A1;
 	padding: 15px;
 	margin-bottom: 60px;
 }
 
-form {
-	text-align: center;
-}
-
 .welcome {
 	font-size: 80px;
+	margin: auto;
 	background: -webkit-linear-gradient(#0E94A1 , #13CAD5); 
 	-webkit-background-clip: text;
   	-webkit-text-fill-color: transparent;
 }
+
 
 .time-col, .name-col, .cals-col,.details-col {
 	position: absolute;
@@ -244,34 +299,22 @@ form {
 .details-col {
 	left: 90%;	
 }
-#add-item {
-	background: #223647;
-	padding: 8px 10px;
-	color: white;
-	width: 120px;
+
+/*  */
+
+form {
 	text-align: center;
-	height: 30px;
 }
 
-#add-button {
-	width: 120px;
-	background-color: yellow;
+
+.welcome-div i {
+	text-align: center;
+	color: #13CAD5; 
+	margin: 20px;
 }
 
-#add-item i {
-	margin-left: -3px;
-}
-#add-item span {
-	text-align: left;
-	text-transform: uppercase;
-	font-size: 14px;
-	padding-right: 10px;
-}
 
-#add-item:hover {
-	background: #13CAD5;
-	transition: 0.5s;
-}
+
 
 
 
@@ -346,7 +389,7 @@ select:-webkit-autofill {
 }
 
 
-#delete {
+#delete, button {
 	background-color: rgba(0,0,0,0);
 	border: 0px;
 	color: #223647;
@@ -366,6 +409,7 @@ select:-webkit-autofill {
 	margin-top: 10%;
 	text-align: center;
 }
+
 /*
 select {
 	border: 2px solid  #0E94A1;
@@ -380,39 +424,10 @@ select {
 
 
 
-.single-div .button {
-	background-color:  #223647;
-}
-.single-div .button:hover {
-	background-color:  #223647;
-	color:  #13CAD5;
-}
+
 
 
 .chart-container {
 	margin: 0 auto;
 }
 
-
-
-.month {
-	width: 130px;
-	padding: 10px;
-	margin: 5px 10px;
-	background: #0E94A1;
-}
-
-.month:hover {
-	background: #13CAD5;
-	transition: 0.5s;
-}
-
-.month-div {
-	justify-content: center;
-	margin: 10px 10%;
-	margin-bottom: 50px;
-	align-self: center;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}

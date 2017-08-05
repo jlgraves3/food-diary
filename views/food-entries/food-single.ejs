@@ -5,19 +5,19 @@
 	</a>
 
 	<div class='single-div entry'>
+
 		<h1><%= data.name %></h1>
 		<h3><%= data.formattedTime %></h3>
 		<h3><%= data.cals %> Calories</h3>
 		<h3><%= data.details %></h3>
 	
+		<div class='edit-div'>
+			<a id='edit' href='/food/<%=data.id%>/edit'><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
 
-	<div class='edit-div'>
-		<a id='edit' href='/food/<%=data.id%>/edit'><i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
-	</a>
-		<form method='POST' action='/food/<%=data.id%>?_method=delete'>
-			<button id='delete' type='submit' value=''><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
-		</form>
-	</div>
+			<form method='POST' action='/food/<%=data.id%>?_method=delete'>
+				<button id='delete' type='submit' value=''><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
+			</form>
+		</div>
 
 	</div>
 
