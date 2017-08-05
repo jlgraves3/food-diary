@@ -1,3 +1,4 @@
+//import dependencies
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
@@ -27,17 +28,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//set up port
 const port = process.env.PORT || 3000;
 app.listen(port, function() {
 	console.log('Listening on port ' + port);
 });
 
-
+//set up views
 app.set('views',path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
+//index route
 app.get('/', (req,res) => {
 	res.render('index',{
 		currentPage: 'index',
@@ -45,6 +48,7 @@ app.get('/', (req,res) => {
 	});
 });
 
+//import routes
 const foodRoutes = require('./routes/food-routes');
 app.use('/food', foodRoutes);
 const authRoutes = require('./routes/auth-routes');
@@ -55,11 +59,10 @@ const statsRoutes = require('./routes/stats-routes');
 app.use('/stats',statsRoutes);
 const archiveRoutes = require('./routes/archive-routes');
 app.use('/archive',archiveRoutes);
-
 const resultRoutes = require('./routes/result-routes');
 app.use('/result',resultRoutes);
 
-// Error handler!
+// error handler
 app.get('*', (req, res) => {
     res.status(404).send('not found!');
 });
