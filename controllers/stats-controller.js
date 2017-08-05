@@ -16,7 +16,7 @@ function formatWeekDates(dates) {
 
 //stats index route
 statsController.index = (req,res) => {
-	var end = "\'" + moment().format('YYYY-MM-DD') + "\'" ;
+	var end = "\'" + moment().add(1,'day').format('YYYY-MM-DD') + "\'" ;
 	var start = "\'" + moment().subtract(7,'day').format('YYYY-MM-DD') + "\'" ;
 	console.log(start,end);
 
