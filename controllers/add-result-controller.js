@@ -1,8 +1,8 @@
-const moment = require('moment');
 const foodEntry = require('../models/food-entries');
 
 const resultController = {};
 
+//gets data from search result item in req body, render in form
 resultController.resultForm = (req,res) => {
 	res.render('food-entries/food-result-add', {
 		name: req.body.name,

@@ -1,10 +1,12 @@
+//import modules
 const foodEntry  = require('../models/food-entries.js');
 const moment = require('moment');
+
 const foodController = {};
 
 var today = moment().format('YYYY-MM-DD');
-var yesterday = moment().add(-1,'day').format('YYYY-MM-DD');
 
+//add formatted time field to entry object
 parseTime = (entry) => {
 	let time = entry.time;
 	let HH = time.slice(0,2);
@@ -19,19 +21,21 @@ parseTimeMap = (entries) => {
 	entries.map(parseTime);
 };
 
+//food index route - shows food entries for current day
 foodController.index = (req,res) => {
+	//get total daily calories
 	foodEntry.dailyCals(today,req.user.id)
 	.then((total) =>
+		//get all entries for day
 		foodEntry.findAll(today,req.user.id)
 		.then(entries => {
 			parseTimeMap(entries);
+			//render food index page
 			res.render('food-entries/food-index', {
 				data: entries,
 				date: moment(today).format('dddd, MMMM Do YYYY'),
 				totalCals: total.sum,
-				yesterday: yesterday,
 				currentPage: 'food',
-				username: req.user.username,
 			});
 		}).catch(err => {
 	      console.log(err);
@@ -39,33 +43,16 @@ foodController.index = (req,res) => {
 	    }));
 } 
 
-/*
-foodController.indexOld = (req,res) => {
-	foodEntry.dailyCals(req.params.date,req.user.id)
-	.then((total) =>
-		foodEntry.findAll(req.params.date,req.user.id)
-		.then(entries => {
-			res.render('archive/day-single', {
-				data: entries,
-				date: moment(req.params.date).format('dddd, MMMM Do YYYY'),
-				totalCals: total.sum,
-				currentPage: null,
-				username: req.user.username,
-			});
-		}).catch(err => {
-	      console.log(err);
-	      res.status(500).json(err);
-	    }));
-} */
- 
+//route for specific food entry
 foodController.show = (req,res) => {
+	//gets data for specific entry
 	foodEntry.findById(req.params.id, today, req.user.id)
 	.then(entry => {
 		parseTime(entry);
+		//render page for entry
 		res.render('food-entries/food-single', {
 			data: entry,
-			currentPage: 'food',
-			username: req.user.username,
+			currentPage: null,
 		});
 	}).catch(err => {
       console.log(err);
@@ -73,6 +60,7 @@ foodController.show = (req,res) => {
     });
 } 
 
+//create new food entry and add to database
 foodController.create = (req,res) => {
 	foodEntry.create({
 		name: req.body.name,
@@ -88,13 +76,14 @@ foodController.create = (req,res) => {
     });
 }
 
+
+//route to edit a food entry
 foodController.edit = (req,res) => {
 	foodEntry.findById(req.params.id, today, req.user.id)
 	.then(entry => {
 		res.render('food-entries/food-update', {
 			data: entry,
-			currentPage: 'food',
-			username: req.user.username,
+			currentPage: null,
 		});
 	}).catch(err => {
       console.log(err);
@@ -102,6 +91,7 @@ foodController.edit = (req,res) => {
     });
 }
 
+//update database with new data on specific entry
 foodController.update = (req,res) => {
 	foodEntry.update({
 		name: req.body.name,
@@ -118,6 +108,8 @@ foodController.update = (req,res) => {
     });
 }
 
+
+//remove food entry from database
 foodController.delete = (req,res) => {
 	foodEntry.delete(req.params.id)
 	.then(() =>

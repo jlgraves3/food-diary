@@ -3,9 +3,12 @@ const User = require('../models/user');
 
 const usersController = {};
 
+//create new user 
 usersController.create = (req,res) => {
+	//encrypt password
 	const salt = bcrypt.genSaltSync();
 	const hash = bcrypt.hashSync(req.body.password, salt);
+	//add to database
 	User.create({
 		username: req.body.username,
 		email: req.body.email,
@@ -23,12 +26,12 @@ usersController.create = (req,res) => {
 	});
 }
 
+//user index route - profile page
 usersController.index = (req,res) => {
 	res.render('auth/profile',{
 		user: req.user,
 		data: '',
 		currentPage: 'profile',
-		username: req.user.username,
 	});
 }
 
