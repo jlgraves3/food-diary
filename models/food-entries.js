@@ -2,6 +2,7 @@ const db = require('../db/config');
 
 const foodEntry = {};
 
+//get all food entries for given date
 foodEntry.findAll = (date,userid) => {
 	console.log(date);
 	return db.query(`
@@ -11,6 +12,7 @@ foodEntry.findAll = (date,userid) => {
 	`, [date,userid]);
 }
 
+//get specific food entry
 foodEntry.findById = (id,date,userid) => {
 	return db.oneOrNone(`
 		SELECT * FROM food_entries 
@@ -20,6 +22,7 @@ foodEntry.findById = (id,date,userid) => {
 		,[id,date,userid]);
 } 
 
+//insert new food entry into table
 foodEntry.create = (entry, userid) => {
 	return db.one(`
 		INSERT INTO food_entries
@@ -29,6 +32,7 @@ foodEntry.create = (entry, userid) => {
 	`, [entry.name, entry.date, entry.time, entry.cals, entry.details,userid]);	
 }
 
+//update food entry with new info
 foodEntry.update = (entry, id) => {
 	return db.none(`
 		UPDATE food_entries SET
@@ -41,6 +45,7 @@ foodEntry.update = (entry, id) => {
 	`, [entry.name, entry.date, entry.time, entry.cals, entry.details,id]);
 }
 
+//remove food entry
 foodEntry.delete = id => {
 	return db.none(`
 		DELETE FROM food_entries

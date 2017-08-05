@@ -1,7 +1,6 @@
 //import modules
-const Archive  = require('../models/archive.js');
-const moment = require('moment');
 const foodEntry = require('../models/food-entries');
+const moment = require('moment');
 const today = moment().format('YYYY-MM-DD');
 
 const archiveController = {};

@@ -2,6 +2,7 @@ const db = require('../db/config');
 
 const User = {};
 
+//find user by username
 User.findByUserName = username => {
 	return db.oneOrNone(`
 		SELECT * FROM users 
@@ -9,6 +10,7 @@ User.findByUserName = username => {
 	`, [username]);
 }
 
+//insert new user into users table
 User.create = user => {
 	return db.one(`
 		INSERT INTO users

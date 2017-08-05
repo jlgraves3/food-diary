@@ -1,17 +1,8 @@
 const db = require('../db/config');
 const Stats = {};
 
-
+//return total daily cals for each day between start and end date
 Stats.allCals = (userid,start,end) => {
-	let query = `
-		SELECT date, SUM(cals) AS daily_sum
-		FROM food_entries
-		WHERE user_id = ${userid} AND 
-		date > ${start} AND date < ${end}
-		GROUP BY date
-		ORDER BY date
-	`;
-	console.log(query);
 	return db.query(`
 		SELECT date, SUM(cals) AS daily_sum
 		FROM food_entries
@@ -22,6 +13,7 @@ Stats.allCals = (userid,start,end) => {
 	`,[userid,start,end]);
 }
 
+//return total calories between start and end date
 Stats.totalCals = (userid,start,end) => {
 	return db.query(`
 		SELECT SUM(cals)
