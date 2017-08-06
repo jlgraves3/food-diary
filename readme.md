@@ -8,6 +8,17 @@ This app allows users to sign in and keep a running record of everything they ea
 
 ### Wireframes
 
+Home Page
+
+![login](./wireframes/login.png)
+
+Main Food Diary
+
+![main](./wireframes/main.png)
+
+Adding an Item
+
+![add item](./wireframes/add.png)
 
 
 ### User Stories
