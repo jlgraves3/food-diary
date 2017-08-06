@@ -13,6 +13,11 @@ var cals = [<%=cals%>];
 console.log(cals);
 console.log(typeof dates);
 
+/* most of this code was taken from the chartjs docs:
+	- http://www.chartjs.org/docs/latest/
+ 	- http://www.chartjs.org/docs/latest/charts/line.html
+*/
+
 	var ctx = document.getElementById("myLineChart").getContext('2d');
 	var myLineChart = new Chart(ctx, {
 		type: 'line',
