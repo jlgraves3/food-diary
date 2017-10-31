@@ -2,33 +2,48 @@
 <ul>
 	
 	<% if (currentPage === 'food') { %>
-		<li id='home' class='current-page'><a href='/food'>Food</a></li>
+		<li id='home' class='current-page'><a href='/food'>
+		<i class="fa fa-home" aria-hidden="true"></i>
+	</a></li>
 	<% } else { %>
-		<li id='home'><a href='/food'>Food</a></li>
+		<li id='home'><a href='/food'>
+			<i class="fa fa-home" aria-hidden="true"></i>
+		</a></li>
 	<% } %>
 
 
 	<% if (currentPage === 'archive') { %>
-		<li id='archive' class='current-page'><a href='/'>Archive</a></li>
+		<li id='archive' class='current-page'><a href='/'>
+			<i class="fa fa-archive" aria-hidden="true"></i>
+		</a></li>
 	<% } else { %>
-		<li id='archive'><a href='/archive'>Archive</a></li>
+		<li id='archive'><a href='/archive'>
+			<i class="fa fa-archive" aria-hidden="true"></i>
+		</a></li>
 	<% } %>
 
 
 	<% if (currentPage === 'stats') { %>	
-		<li id='stats' class='current-page'><a href='/stats'>Stats</a></li>
+		<li id='stats' class='current-page'><a href='/stats'><i class="fa fa-bar-chart" aria-hidden="true"></i>
+</a></li>
 	<% } else { %>
-		<li id='stats'><a href='/stats'>Stats</a></li>
+		<li id='stats'><a href='/stats'><i class="fa fa-bar-chart" aria-hidden="true"></i>
+</a></li>
 	<% } %>
 	
 
 	<% if (currentPage === 'profile') { %>
-		<li id='profile' class='current-page'><a href='/user'>Profile</a></li>
+		<li id='profile' class='current-page'><a href='/user'>
+			<i class="fa fa-user" aria-hidden="true"></i>
+		</a></li>
 	<% } else { %>
-		<li id='profile'><a href='/user'>Profile</a></li>
+		<li id='profile'><a href='/user'>
+			<i class="fa fa-user" aria-hidden="true"></i>
+		</a></li>
 	<% } %>
 
-	<li><a href='/auth/logout'>Log Out</a></li>
+	<li><a href='/auth/logout'><i class="fa fa-sign-out" aria-hidden="true"></i>
+</a></li>
 
 
 </ul>
