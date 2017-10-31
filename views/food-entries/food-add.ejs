@@ -1,16 +1,17 @@
 <% include ../partials/boilerplate %>
 	
 	<a href='/food' class='back'>
-		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-chevron-left fa" aria-hidden="true"></i>
 	</a>
 
 
 	<h1>Add Item</h1>
-
+	<div class='form-div'>
 		<form class='search' method='POST' action='/food/add'>
 			<input name='item' type='text' placeholder='item'>
 			<input type='submit' value='search' class='button'/>
 		</form>
+	</div>
 
 	<a id='add-manual' href='/food/add-manual'>Add Manually</a>
 

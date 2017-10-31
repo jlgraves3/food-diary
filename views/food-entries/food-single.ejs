@@ -1,21 +1,22 @@
 <% include ../partials/boilerplate %>
 	
 	<a href='/food' class='back'>
-		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-chevron-left" aria-hidden="true"></i>
 	</a>
 
-	<div class='single-div entry'>
-
-		<h1><%= data.name %></h1>
-		<h3><%= data.formattedTime %></h3>
-		<h3><%= data.cals %> Calories</h3>
-		<h3><%= data.details %></h3>
+	<h1>Date</h1>
+	<div class='single-div'>
+		<div><span>Time </span><h3><%= data.formattedTime %></h3></div>
+		<div><span>Item </span><h3><%= data.name %></h3></div>
+		<div><span>Brand </span><h3><%= data.details %></h3></div>
+		<div><span>Calories </span><h3><%= data.cals %></h3></div>
+		
 	
 		<div class='edit-div'>
-			<a id='edit' href='/food/<%=data.id%>/edit'><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
+			<a id='edit' href='/food/<%=data.id%>/edit'><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
 			<form method='POST' action='/food/<%=data.id%>?_method=delete'>
-				<button id='delete' type='submit' value=''><i class="fa fa-trash-o fa-3x" aria-hidden="true"></i></button>
+				<button id='delete' type='submit' value=''><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 			</form>
 		</div>
 

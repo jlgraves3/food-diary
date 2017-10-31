@@ -1,8 +1,8 @@
 <% include ../partials/boilerplate %>
 	
-	<h1><%= date %></h1>
+	<h1 class='date'><%= date %></h1>
 
-	<div class='headers entry'>
+	<div class='headers'>
 		<h2 class='time-col'>Time</h2>
 		<h2 class='name-col'>Item</h2>
 		<h2 class='cals-col'>Calories</h2>
@@ -11,25 +11,27 @@
 
 	<% for (let food of data) { %>
 
+		
+		<a href='/food/<%=food.id%>'>
 		<div class='entry'>
 			<h2 class='time-col time'><%= food.formattedTime %></h2>
 			<h2 class='name-col'><%= food.name %></h1>
-			<h2 class='cals-col'><%= food.cals %> calories</h2>
-			<a class ='details-col' href='/food/<%=food.id%>'><i class="fa fa-arrow-circle-right fa-2x" aria-hidden="true"></i>
-			</a>
+			<h2 class='cals-col'><%= food.cals %> cals</h2>
+			<i class="fa fa-arrow-right details-col" aria-hidden="true"></i>
 		</div>
+		</a>
 
 	<% } %>
 
 	<a id='add-button' href='/food/add'>
-	<div class='entry' id='add-item'>
-		<i class="fa fa-plus-square fa-2x" aria-hidden="true"></i>
+	<div id='add-item'>
+		<i class="fa fa-plus" aria-hidden="true"></i>
 		<span>Add Item</span>
 	</div>
 	</a>
 	
 
-	<div class='entry' id='total-cals'>
+	<div class='total-cals'>
 		<h2 class='time-col'>TOTAL</h2>
 		<h2 class='name-col'></h2>
 		<h2 class='cals-col'><%= totalCals%> calories</h2>

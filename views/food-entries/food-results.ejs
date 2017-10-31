@@ -1,20 +1,19 @@
 <% include ../partials/boilerplate %>
 
 	<a href='/food/add' class='back'>
-		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-chevron-left" aria-hidden="true"></i>
 	</a>
-
 	<h1><%= header %></h1>
 		<% var i=0 %>
 		<% for (let result of results) { %>
 			<div class='entry result' id='<%=i%>'>
 
-				<% if (result.fields.item_name.length > 70) { %>
-					<h2 class='time-col'><%= result.fields.item_name.slice(0,80) %>... : <%= result.fields.brand_name %></h2> 
+				<% if (result.fields.item_name.length > 100) { %>
+					<h2 class='time-col'><%= result.fields.item_name.slice(0,40) %>... : <%= result.fields.brand_name %></h2> 
 				<% } else { %>
 					<h2 class='time-col'><%= result.fields.item_name %> : <%= result.fields.brand_name %></h2> 
 				<% } %>
-				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> Calories</h2>
+				<h2 class='cals-col'><%= Math.round(result.fields.nf_calories) %> cals</h2>
 
 
 				<form method='POST' action='/result/add' class='result-add details-col'>
