@@ -6,41 +6,46 @@ const statsController = {};
 
 //formats dates into numbers to pass to graph
 function formatDates(dates) {
-	return dates.map(date => `${moment(date).format('DD')}`);
+	return dates.map(date => `${moment(date).format('D')}`);
 }
-/*
-function formatWeekDates(dates) {
-	return dates.map(date => "\'" +`${moment(date).format('ddd MM D')}` + "\'" );
-}*/
-
 
 //stats index route
 statsController.index = (req,res) => {
-	var end = "\'" + moment().add(1,'day').format('YYYY-MM-DD') + "\'" ;
-	var start = "\'" + moment().subtract(7,'day').format('YYYY-MM-DD') + "\'" ;
-	console.log(start,end);
-
+	//set time interval for query
+	var end = moment().add(1,'day').format('YYYY-MM-DD');
+	var start = moment().subtract(7,'day').format('YYYY-MM-DD');
 	//get stats for past week
 	Stats.totalCals(req.user.id,start,end).then(totalCals => {
 		Stats.allCals(req.user.id,start,end)
 		//initialize data
 		.then(weekData => {
-			let cals = [];
-			let dates = [];
-			weekData.forEach((i) => {
-				cals.push(i.daily_sum + '');
-				dates.push(i.date);
+			var dailyCals = {};
+			//initalize dates array and dailyCals object
+			for (var i=7; i > 0; i--) {
+				let date = moment().subtract(i,'day').format('ddd MMM D');
+				dailyCals[date] = 0;
+			}
+			//update dailyCals object with correct Calorie info
+			weekData.map((stat) => {
+				let date = moment(stat.date).format('ddd MMM D');
+				dailyCals[date] = stat.daily_sum;
 			});
-		//render page/graph with data
-		res.render('stats/stats-index', {
-			dates: formatDates(dates),
-			cals: cals,
-			avgCals: totalCals[0].sum/7,
-			currentPage: 'stats',
-			username: req.user.username,
-			months: pastYearMonths(),
+			var dates = Object.keys(dailyCals);
+			//format data object
+			var data = dates.map((date) => {
+				return {
+						date: moment(date).format('ddd'),
+						cals: dailyCals[date]
+				}
+			});
+			//render page/graph with data
+			res.render('stats/stats-index', {
+				avgCals: totalCals[0].sum/weekData.length,
+				currentPage: 'stats',
+				data: data,
+				months: pastYearMonths(),
+			});
 		});
-	});
 
 	}).catch(err => {
 		console.log(err);
@@ -64,7 +69,7 @@ function pastYearMonths() {
 
 //stats month route
 statsController.month = (req,res) => {
-	var month = req.params.month
+	var month = req.params.month;
 	var start = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
 	var end = moment(start).add(1,'month').add(2,'day').format('YYYY-MM-DD');
 	monthLen = 	 moment(`2017-${month}`,'YYYY-MM').daysInMonth();
@@ -72,20 +77,30 @@ statsController.month = (req,res) => {
 	Stats.totalCals(req.user.id,start,end).then(totalCals => {
 		Stats.allCals(req.user.id,start,end)
 		.then(monthData => {
-			//initialize datasets
-			let cals = [];
-			let dates = [];
-			monthData.forEach((i) => {
-				cals.push(i.daily_sum + '');
-				dates.push(i.date);
+			//initalize object with calories = 0 for each day
+			var dailyCals = {};
+			for (var i = 1; i < monthLen; i++) {
+				let date = moment(start).add(i,'day');
+				dailyCals[date] = 0;
+			}
+			monthData.forEach((stat) => {
+				let date = moment(stat.date).format('YYYY-MM-DD');
+				dailyCals[date] = stat.daily_sum;
+			});
+			var dates = Object.keys(dailyCals);
+			//format data object 
+			var data = dates.map((date) => {
+				return {
+					date: moment(date).format('D'),
+					cals: dailyCals[date],
+				}
 			});
 		//render month page and graph with data
 		res.render('stats/month-table', {
-			dates: formatDates(dates),
-			cals: cals,
-			avgCals: totalCals[0].sum/monthLen,
-			currentPage: null,
-			month: moment(`2017-${month}-01`).format('MMMM')
+			data: data,
+			avgCals: totalCals[0].sum/monthData.length,
+			currentPage: 'stats',
+			month: moment(`2017-${month}-01`).format('MMMM'),
 		});
 	})
 
