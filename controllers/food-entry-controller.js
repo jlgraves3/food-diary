@@ -52,7 +52,8 @@ foodController.show = (req,res) => {
 		//render page for entry
 		res.render('food-entries/food-single', {
 			data: entry,
-			currentPage: null,
+			date: moment(today).format('dddd, MMMM Do YYYY'),
+			currentPage: 'home',
 		});
 	}).catch(err => {
       console.log(err);
