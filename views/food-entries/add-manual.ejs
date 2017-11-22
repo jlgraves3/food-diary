@@ -7,13 +7,16 @@
 
 	<h1>Add Item</h1>
 
-			<form class='search' method='POST' action='/food'>
-				<input name='time' type='time' placeholder='time' required />
-				<input name='name' type='text' placeholder='item' required />
-				<input name='cals' type='number' placeholder='calories' required />
-				<input name='details' type='text' placeholder='details' />
-				<input type='submit' value='add' class='button'/>
-			</form>
-	
+		<form class='search' method='POST' action='/food'>
+			<input name='time' type='time' placeholder='time' required />
+			<input name='name' type='text' placeholder='item' required />
+			<input name='cals' type='number' placeholder='calories' required />
+			<input name='details' type='text' placeholder='details' />
+			<input type='submit' value='add' class='button'/>
+		</form>
+			
+	<div class='cancel'>
+	<a href='/food' id='cancel'>Cancel</a>
+	</div>
 
 <% include ../partials/end %>

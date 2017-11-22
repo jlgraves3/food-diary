@@ -6,7 +6,7 @@
 	<h1><%= header %></h1>
 		<% var i=0 %>
 		<% for (let result of results) { %>
-			<div class='entry result' id='<%=i%>'>
+			<div class='result' id='<%=i%>'>
 
 				<% if (result.fields.item_name.length > 100) { %>
 					<h2 class='time-col'><%= result.fields.item_name.slice(0,40) %>... : <%= result.fields.brand_name %></h2> 

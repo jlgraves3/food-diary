@@ -1,6 +1,6 @@
 <% include ../partials/boilerplate %>
 	
-	<h1 class='date'><%= date %></h1>
+	<h1><%= date %></h1>
 
 	<div class='headers'>
 		<h2 class='time-col'>Time</h2>
@@ -10,7 +10,6 @@
 	</div>
 
 	<% for (let food of data) { %>
-
 		
 		<a href='/food/<%=food.id%>'>
 		<div class='entry'>
