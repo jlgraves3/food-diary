@@ -40,7 +40,7 @@ statsController.index = (req,res) => {
 			});
 			//render page/graph with data
 			res.render('stats/stats-index', {
-				avgCals: totalCals[0].sum/weekData.length,
+				avgCals: totalCals[0].sum/weekData.length || 0,
 				currentPage: 'stats',
 				data: data,
 				months: pastYearMonths(),
@@ -98,7 +98,7 @@ statsController.month = (req,res) => {
 		//render month page and graph with data
 		res.render('stats/month-table', {
 			data: data,
-			avgCals: totalCals[0].sum/monthData.length,
+			avgCals: totalCals[0].sum/monthData.length || 0,
 			currentPage: 'stats',
 			month: moment(`2017-${month}-01`).format('MMMM'),
 		});
