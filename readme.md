@@ -8,6 +8,17 @@ This app allows users to sign in and keep a running record of everything they ea
 
 ### Wireframes
 
+Home Page
+
+![login](./wireframes/login.png)
+
+Main Food Diary
+
+![main](./wireframes/main.png)
+
+Adding an Item
+
+![add item](./wireframes/add.png)
 
 
 ### User Stories
@@ -95,9 +106,7 @@ statsController.month = (req,res) => {
 ```
 
 ### Improvements
-I would ideally like to have the line graph display formatted dates on the X-axis instead of just the day number (i.e. 'Aug 31' instead of just '31'), and also have datapoints as 0 calories for days without entries so that days aren't skipped on the graph.
-
-I also might add options for more fields the user can optionally track, like whether something is vegan or gluten-free.
+I would ideally like to have the line graph display formatted dates on the X-axis instead of just the day number (i.e. 'Aug 31' instead of just '31'), and also have datapoints as 0 calories for days without entries so that days aren't skipped on the graph. I could add options for more fields the user can optionally track, like whether something is vegan or gluten-free. The app could also use some media queries to make it more responsive.
 
 
 ### How to Run Locally
