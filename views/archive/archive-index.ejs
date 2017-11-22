@@ -4,10 +4,11 @@
 
 	<% for (let day of pastDays)  { %>
 
-		<div class='entry archive'>
+		<a href='/archive/<%=day.url%>'>
+		<div class='archive'>
 			<h2><%=day.display%></h2>
-			<a href='/archive/<%=day.url%>'><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 		</div>
+		</a>
 	
 	<% } %>
 
