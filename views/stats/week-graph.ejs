@@ -21,18 +21,14 @@ text {
 	fill: #223647;
 	font-family: monospace;
 }
-
 </style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
-
 var data = <%- JSON.stringify(data) %>;
 
-console.log(data);
-
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 550 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 280 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
 
 // set the ranges
 var x = d3.scaleBand()
@@ -64,8 +60,15 @@ var svg = d3.select(".svg-container").append("svg")
 
   // add the x Axis
   svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .attr("transform", "translate(0," + 250 + ")")
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+      .style("text-anchor","end")
+      .attr("dx", "-1em")
+      .attr("dy", "-.15em")
+      .attr("transform", function(d) {
+        return "rotate(-80)"
+      })
 
   // add the y Axis
   svg.append("g")

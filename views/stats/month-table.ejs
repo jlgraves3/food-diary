@@ -1,12 +1,15 @@
 <% include ../partials/boilerplate %>
 
 <a href='/stats' class='back'>
-		<i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+		<i class="fa fa-chevron-left" aria-hidden="true"></i>
 	</a>
 
-<h1><%=month%></h1>
-<h2 class='header-2'>Average Daily Calories: <%=Math.round(avgCals) %></h2>
+<h1>Stats</h1>
+<h3 class='stats'><%=month%></h3>
+<h2 class='stats'>Average Daily Calories: <%=Math.round(avgCals)%></h2>
 
+<div class='svg-container'>
 <% include graph %>
+</div>
 
 <% include ../partials/end%>

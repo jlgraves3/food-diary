@@ -1,21 +1,22 @@
 <% include ../partials/boilerplate %>
 
 <h1>Stats</h1>
+<h3 class='stats'>This Week</h3>
+<h2 class='stats'>Average Daily Calories: <%=Math.round(avgCals)%></h2>
 
-<h2 class='header-2'>This Week</h2>
-<h3 class='header-3'>Average Daily Calories: <%=Math.round(avgCals)%></h3>
-<% include graph %>
+<div class='svg-container'>
+	<% include week-graph %>
+</div>
 
-<h2 class='header-2'>By Month</h2>
 
 <div class='month-div'>
 	<% for (let month of months) { %>
 		<a href='/stats/<%=month.number%>'>
-		<div class='month entry'>
-			<h2 class=''><%=month.string%></h1>
+		<div class='month'>
+			<h2><%=month.string%></h2>
 		</div>
 		</a>
-	<% } %>
+	<% } %>.
 <div>
 
 <% include ../partials/end %>
