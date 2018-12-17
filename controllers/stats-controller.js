@@ -20,6 +20,7 @@ statsController.index = (req,res) => {
 		//initialize data
 		.then(weekData => {
 			var dailyCals = {};
+			var total = 0;
 			//initalize dates array and dailyCals object
 			for (var i=7; i > 0; i--) {
 				let date = moment().subtract(i,'day').format('ddd MMM D');
@@ -29,13 +30,13 @@ statsController.index = (req,res) => {
 			weekData.map((stat) => {
 				let date = moment(stat.date).format('ddd MMM D');
 				dailyCals[date] = stat.daily_sum;
-			});
+			}); 
 			var dates = Object.keys(dailyCals);
 			//format data object
 			var data = dates.map((date) => {
 				return {
-						date: moment(date).format('ddd'),
-						cals: dailyCals[date]
+					date: moment(date).format('ddd'),
+					cals: dailyCals[date]
 				}
 			});
 			//render page/graph with data
@@ -60,7 +61,7 @@ function pastYearMonths() {
 		pastTwelveMonths.push(
 			{
 			number: moment().subtract(i,'month').format('M'),
-			string: moment().subtract(i,'month').format('MMMM')
+			string: moment().subtract(i,'month').format('MMMM YYYY')
 		});
 	}
 	return pastTwelveMonths;
@@ -69,24 +70,27 @@ function pastYearMonths() {
 
 //stats month route
 statsController.month = (req,res) => {
+	let year = moment().format('YYYY');
 	var month = req.params.month;
-	var start = moment(`2017-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
+	var start = moment(`${year}-${month}-01`).add(-1,'day').format('YYYY-MM-DD');
 	var end = moment(start).add(1,'month').add(2,'day').format('YYYY-MM-DD');
-	monthLen = 	 moment(`2017-${month}`,'YYYY-MM').daysInMonth();
+	monthLen = 	moment(`${year}-${month}`,'YYYY-MM').daysInMonth();
 	//gets average daily cals and  daily total calories for each day in given month 
 	Stats.totalCals(req.user.id,start,end).then(totalCals => {
 		Stats.allCals(req.user.id,start,end)
 		.then(monthData => {
 			//initalize object with calories = 0 for each day
 			var dailyCals = {};
-			for (var i = 1; i < monthLen; i++) {
+			var total = 0;
+			for (var i = 1; i <= monthLen; i++) {
 				let date = moment(start).add(i,'day');
-				dailyCals[date] = 0;
+				dailyCals[date] = 0
 			}
+			
 			monthData.forEach((stat) => {
 				let date = moment(stat.date).format('YYYY-MM-DD');
 				dailyCals[date] = stat.daily_sum;
-			});
+			}); 
 			var dates = Object.keys(dailyCals);
 			//format data object 
 			var data = dates.map((date) => {
@@ -100,7 +104,7 @@ statsController.month = (req,res) => {
 			data: data,
 			avgCals: totalCals[0].sum/monthData.length || 0,
 			currentPage: 'stats',
-			month: moment(`2017-${month}-01`).format('MMMM'),
+			month: moment(`${year}-${month}-01`).format('MMMM YYYY'),
 		});
 	})
 

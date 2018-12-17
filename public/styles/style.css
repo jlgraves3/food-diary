@@ -171,12 +171,11 @@ h2.stats {
 	text-transform: uppercase;
 	text-align: center;
 }
-/*
-.header-3 {
-	text-align: center;
-	font-size: 14px;
-	margin-bottom: 20px;
-}*/
+
+h3.stats {
+	font-size: 16px;
+	line-height: 2em;
+}
 
 .total-cals {
 	height: 30px;
@@ -445,6 +444,9 @@ input[type=submit],.home-div a {
 	h1 {
 		font-size: 22px;
 	}
+	h3.stats {
+		font-size: 20px;
+	}
 	.entry {
 		margin: 5px 30px;
 		padding: 5px;
@@ -498,6 +500,7 @@ input[type=submit],.home-div a {
 		border-bottom: 2px solid #FF5228;
 
 	}
+
 
 
 	.auth-div form {

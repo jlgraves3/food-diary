@@ -26,6 +26,7 @@ foodRoutes.get('/add/:item', authHelpers.loginRequired, foodHelper.getItemsFromA
 	res.render('food-entries/food-results', {
 		results: res.locals.results,
 		currentPage: 'food',
+		searchTerm: req.params.item,
 		header: `Results for "${req.params.item}"`,
 		username: req.user.username,
 		}); 
